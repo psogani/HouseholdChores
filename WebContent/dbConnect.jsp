@@ -1,4 +1,4 @@
-<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*"%>
 <%@ page import="java.io.*" %>
 
 <%
@@ -7,8 +7,8 @@ String dbms="mysql";
 String serverName="localhost";
 String portNumber="3306";
 String dbUserName="root";
-String dbPassword="root";
-String databaseName="sample";
+String dbPassword="pranay27";
+String databaseName="householdhores";
 
 String connectionURL = "jdbc:"+ dbms +"://"+ serverName +":"+ portNumber +"/"+databaseName;
 Connection connection = null;

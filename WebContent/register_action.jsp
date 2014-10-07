@@ -14,8 +14,8 @@ String password = request.getParameter("password");
 //out.println(userId);
 //out.println(password);
 
-
-PreparedStatement pst =(PreparedStatement) connection.prepareStatement("insert into 'users'(fname,lname,email,userId,password) values(?,?,?,?,?)"); 
+String insertQuery = "INSERT INTO users(fname,lname,email,user_id,password) VALUES(?,?,?,?,?)";
+PreparedStatement pst =(PreparedStatement) connection.prepareStatement(insertQuery); 
 
 pst.setString(1,firstName);  
 pst.setString(2,lastName);        
@@ -28,7 +28,7 @@ int pstStatusCode = pst.executeUpdate();
 
 
 
-connection.commit();
+//connection.commit();
 
 if(pstStatusCode!=0){
 	
