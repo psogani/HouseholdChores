@@ -15,7 +15,7 @@ String password = request.getParameter("password");
 //out.println(password);
 
 
-PreparedStatement pst =(PreparedStatement) connection.prepareStatement("insert into 'users'(fname,lname,email,userId,password) values(?,?,?,?,?)"); 
+PreparedStatement pst =(PreparedStatement) connection.prepareStatement("INSERT INTO `users`(`fname`, `lname`, `email`, `userId`, `password`) VALUES (?,?,?,?,?)"); 
 
 pst.setString(1,firstName);  
 pst.setString(2,lastName);        
@@ -32,15 +32,16 @@ connection.commit();
 
 if(pstStatusCode!=0){
 	
-	/*
-	//Redirect to homepage
-   	String site = new String("http://www.photofuntoos.com");
-   	response.setStatus(response.SC_MOVED_TEMPORARILY);
+	// /*
+	
+   	String site = new String("home.jsp");
    	response.setHeader("Location", site); 
- 	//Redirect to homepage
- 	*/
-  	String msg="Record has been inserted";
-  	out.println("<font size='6' color=blue>" + msg + "</font>");  
+ 	
+ 	
+ 	// */
+
+  	//String msg="Record has been inserted";
+  	//out.println("<font size='6' color=blue>" + msg + "</font>");  
 
 }  
 else{
