@@ -11,7 +11,7 @@
 
 <form name="login" action="home.jsp" method="post">
 <table border=0>
-<tr><td>UserId:</td><td><input type="text" name="userId"></td></tr>
+<tr><td>UserId:</td><td><input type="text" name="user_id"></td></tr>
 <tr><td>Password:</td><td><input type="password" name="password"></td></tr>
 <tr><td><input id="login" type="submit" value="Login" /></td></tr>
 </table></form> 

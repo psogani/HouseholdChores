@@ -20,7 +20,7 @@ String password = request.getParameter("password");
 //out.println(password);
 
 
-String query = "SELECT userId FROM users WHERE userId = ?";
+String query = "SELECT user_id FROM users WHERE user_id = ?";
  
 PreparedStatement pst = connection.prepareStatement(query); 
 
