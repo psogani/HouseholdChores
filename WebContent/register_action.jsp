@@ -1,4 +1,4 @@
-<%@include file="dbConnect.jsp" %>
+x<%@include file="dbConnect.jsp" %>
 
 <% 
 
@@ -39,13 +39,12 @@ if(pstStatusCode!=0){
    	response.setHeader("Location", site); 
  	//Redirect to homepage
  	*/
-  	String msg="Record has been inserted";
-  	out.println("<font size='6' color=blue>" + msg + "</font>");  
+  	out.println("window.location.replace("home.jsp");");  
 
 }  
 else{
 	//Redirect to registration page with message "Invalid fields"
-  	String msg="failed to insert the data";
+  	String msg="failed to insert the data.";
   	out.println("<font size='6' color=blue>" + msg + "</font>");
 }  
 pst.close();
