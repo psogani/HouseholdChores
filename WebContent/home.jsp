@@ -16,12 +16,25 @@ String password = request.getParameter("password");
 String query = "SELECT * FROM users where user_id ='" + user + "' and password = '" + password + "'";
 
 Statement st = connection.createStatement(); 
-
 ResultSet rs= st.executeQuery(query);
 
-rs.next();
-String firstName = rs.getString("fname");
-out.println("Hi, " +firstName + "\n");
+
+if(!rs.next())
+{
+	out.println("<script>window.location.href(\"login.jsp\\?e=wip\")</script>");
+	// Unable to login. 
+}
+else
+{
+	String firstName = rs.getString("fname");
+	out.println("Hi, " +firstName + "\n");
+	
+}
+	
+
+	
+
+
 	
 
 
