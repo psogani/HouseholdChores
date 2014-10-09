@@ -8,7 +8,7 @@ String serverName="localhost";
 String portNumber="3306";
 String dbUserName="root";
 String dbPassword="pranay27";
-String databaseName="householdhores";
+String databaseName="householdchores";
 
 String connectionURL = "jdbc:"+ dbms +"://"+ serverName +":"+ portNumber +"/"+databaseName;
 Connection connection = null;
