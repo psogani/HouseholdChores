@@ -1,21 +1,32 @@
 <%@include file = "dbConnect.jsp" %>
-
 <%
 int flag = 0;
 PreparedStatement pst = null;
-Integer total = (Integer)session.getAttribute("total_tasks");
- for(int row = 1; row <= total; row++){
-	 String taskNumber = Integer.toString(row);
-	 String taskName = request.getParameter("tasknumber"+row);
-	 String taskPriority = request.getParameter("priority"+row);
-	 String taskStatus = request.getParameter("status"+row);
-	 String insertQuery = "INSERT INTO tasks(Task_Number,Task_Name,Task_Priority,Task_Status) VALUES(?,?,?,?)";
+String[] taskName = request.getParameterValues("taskName");
+String[] pointValue = request.getParameterValues("pointValue");
+String[] recurring = new String[taskName.length];
+String[] startDate = request.getParameterValues("startDate");
+String[] endDate = request.getParameterValues("endDate");
+
+for(int i = 0; i < recurring.length; i++){
+	try{
+		if(request.getParameterValues("recurring")[i] != null)
+			recurring[i] = "1"; 
+	}
+	catch(Exception e){
+		recurring[i] = "0";
+	}
+}
+for(int row = 1; row <= taskName.length; row++){
+	 
+	 String insertQuery = "INSERT INTO tasks(taskName,pointValue,recurring,startDate,endDate) VALUES(?,?,?,?,?)";
 	 pst =(PreparedStatement) connection.prepareStatement(insertQuery); 
 
-	 pst.setString(1,taskNumber);  
-	 pst.setString(2,taskName);        
-	 pst.setString(3,taskPriority);
-	 pst.setString(4,taskStatus);
+	 pst.setString(1,taskName[row]);  
+	 pst.setString(2,pointValue[row]);        
+	 pst.setString(3,recurring[row]);
+	 pst.setString(4,startDate[row]);
+	 pst.setString(5,endDate[row]);
 
 
 	 int pstStatusCode = pst.executeUpdate();
