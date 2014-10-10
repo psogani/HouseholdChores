@@ -8,7 +8,12 @@
 <title>Register User</title>
 </head>
 <body>
-<h1 align ="center">Hi, Welcome to HouseholdChores User Registration!</h1>
+<ul id='nav'>
+	<li><a href ="home.jsp">Home</a></li>
+	<li><a href ="CreateTasks.jsp">Create Tasks</a></li>
+	<li><a href ="GetTaskStartDate.jsp">Allocate Tasks</a></li>
+	<li><a href ="login.jsp">Logout</a></li>
+</ul>
 <form name="registerInput" action="register_action.jsp" method="post">
 <div align="center"><br><br><br><br><br><br>
 <input type="text" class="inputs" name="firstName" placeholder="First Name"><br>
