@@ -7,7 +7,7 @@ String dbms="mysql";
 String serverName="localhost";
 String portNumber="3306";
 String dbUserName="root";
-String dbPassword="pranay27";
+String dbPassword="root";
 String databaseName="householdchores";
 
 String connectionURL = "jdbc:"+ dbms +"://"+ serverName +":"+ portNumber +"/"+databaseName;
