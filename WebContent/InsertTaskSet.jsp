@@ -1,21 +1,54 @@
+<%@page import="java.util.Date"%>
 <%@include file = "dbConnect.jsp" %>
-
+<%@page import = "java.text.*" %>
 <%
 int flag = 0;
 PreparedStatement pst = null;
-Integer total = (Integer)session.getAttribute("total_tasks");
- for(int row = 1; row <= total; row++){
-	 String taskNumber = Integer.toString(row);
-	 String taskName = request.getParameter("tasknumber"+row);
-	 String taskPriority = request.getParameter("priority"+row);
-	 String taskStatus = request.getParameter("status"+row);
-	 String insertQuery = "INSERT INTO tasks(Task_Number,Task_Name,Task_Priority,Task_Status) VALUES(?,?,?,?)";
+String[] taskName = request.getParameterValues("taskName");
+String[] pointValue = request.getParameterValues("pointValue");
+String[] recurring = new String[taskName.length];
+DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+
+for(int i = 0; i < recurring.length; i++){
+	try{
+		if(request.getParameterValues("recurring")[i] != null)
+			recurring[i] = "True";
+	}
+	catch(Exception e){
+		recurring[i] = "False";
+	}
+}
+
+for(int row = 0; row < taskName.length; row++){
+	 
+	 String insertQuery = "INSERT INTO tasks(taskName,pointValue,recurring,startDate,endDate) VALUES(?,?,?,?,?)";
 	 pst =(PreparedStatement) connection.prepareStatement(insertQuery); 
 
-	 pst.setString(1,taskNumber);  
-	 pst.setString(2,taskName);        
-	 pst.setString(3,taskPriority);
-	 pst.setString(4,taskStatus);
+	 pst.setString(1,taskName[row]);  
+	 pst.setString(2,pointValue[row]);        
+	 pst.setString(3,recurring[row]);
+	 try{
+		 if(request.getParameterValues("startDate")[row] != null){
+			 java.util.Date start_date = df.parse(request.getParameterValues("startDate")[row]);
+			 pst.setDate(4,new java.sql.Date(start_date.getTime()));
+		 }
+			 
+	 }
+	 catch(Exception e){
+		 java.util.Date start_date = new Date();
+		 pst.setDate(4,new java.sql.Date(start_date.getTime()));
+	 }
+	 try{
+		 if(request.getParameterValues("endDate")[row] != null){
+			 java.util.Date end_date = df.parse(request.getParameterValues("endDate")[row]);
+			 pst.setDate(5,new java.sql.Date(end_date.getTime()));
+		 }
+			 
+	 }
+	 catch(Exception e){
+		 java.util.Date end_date = new Date();
+		 pst.setDate(5,new java.sql.Date(end_date.getTime()));
+	 }
 
 
 	 int pstStatusCode = pst.executeUpdate();
@@ -39,6 +72,7 @@ if(flag == 1){
   	pst.close();
 	connection.close();
 }
+
 %>
 <FORM NAME="view_tasks" ACTION = "ViewTasks.jsp" METHOD="POST">            
             <INPUT TYPE="SUBMIT" VALUE="View Task Table">
