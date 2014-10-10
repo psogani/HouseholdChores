@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@page import="java.util.Date"%>
 <%@include file = "dbConnect.jsp" %>
 <%@page import = "java.text.*" %>
@@ -74,6 +75,10 @@ for(int row = 0; row < taskName.length; row++){
 	 }
 	 catch(Exception e){
 		 java.util.Date end_date = new Date();
+		 Calendar cal = Calendar.getInstance();  
+		 cal.setTime(end_date);  
+		 cal.add(Calendar.DATE, 7); // add 7 days   
+		 end_date = cal.getTime();
 		 pst.setDate(5,new java.sql.Date(end_date.getTime()));
 	 }
 
