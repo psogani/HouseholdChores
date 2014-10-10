@@ -30,6 +30,7 @@
 </body>
 
 <% 
+//get all the parameters
 String firstName = request.getParameter("firstName");
 String lastName = request.getParameter("lastName");
 String email = request.getParameter("email");
@@ -42,6 +43,7 @@ String password = request.getParameter("password");
 //out.println(userId);
 //out.println(password);
 
+//insert into the database
 String insertQuery = "INSERT INTO users(fname,lname,email,userId,password) VALUES(?,?,?,?,?)";
 PreparedStatement pst =(PreparedStatement) connection.prepareStatement(insertQuery); 
 
@@ -58,6 +60,7 @@ int pstStatusCode = pst.executeUpdate();
 
 //connection.commit();
 
+//show errors accordingly
 if(pstStatusCode!=0)
 {
 	String msg="User registered successfully!!.";
@@ -77,6 +80,8 @@ else{
   	String msg="failed to insert the data.";
   	out.println("<font size='6' color=blue>" + msg + "</font>");
 }  
+
+//release all the open resources
 pst.close();
 connection.close();
 

@@ -97,7 +97,7 @@
 				out.print("</SELECT></TD>");
 				out.print("</TD>");
 				String date=request.getParameter("startDate");
-				selectQuery = "SELECT * from tasks where startDate > '"+date+"'";
+				selectQuery = "SELECT * from tasks where startDate >= '"+date+"'";
 				rs= st.executeQuery(selectQuery);
 				out.print("<TD><SELECT name='tasks'>");
 				while(rs.next())

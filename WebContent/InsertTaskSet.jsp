@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@page import="java.util.Date"%>
 <%@include file = "dbConnect.jsp" %>
 <%@page import = "java.text.*" %>
@@ -58,14 +59,22 @@ for(int row = 0; row < taskName.length; row++){
 		 pst.setDate(4,new java.sql.Date(start_date.getTime()));
 	 }
 	 try{
-		 if(request.getParameterValues("endDate")[row] != null){
-			 java.util.Date end_date = df.parse(request.getParameterValues("endDate")[row]);
+		 if(request.getParameterValues("endDate")[row] != null && request.getParameterValues("startDate")[row] != null){
+			 java.util.Date end_date = df.parse(request.getParameterValues("startDate")[row]);
+			 Calendar cal = Calendar.getInstance();
+			 cal.setTime(end_date);
+			 cal.add(Calendar.DATE,7);
+			 end_date = cal.getTime();
 			 pst.setDate(5,new java.sql.Date(end_date.getTime()));
 		 }
 			 
 	 }
 	 catch(Exception e){
 		 java.util.Date end_date = new Date();
+		 Calendar cal = Calendar.getInstance();
+		 cal.setTime(end_date);
+		 cal.add(Calendar.DATE,7);
+		 end_date = cal.getTime();
 		 pst.setDate(5,new java.sql.Date(end_date.getTime()));
 	 }
 

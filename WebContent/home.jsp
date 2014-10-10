@@ -21,6 +21,7 @@
 </head>
 <body>
 <%
+//get the user id passed in the url
 String user = request.getParameter("u");
 %>
 <ul id='nav'>
@@ -34,7 +35,9 @@ String user = request.getParameter("u");
 <%@include file="dbConnect.jsp" %>
 <% 
 
-String query = "SELECT * FROM tasks t,taskAssigned ta, users u where u.userId ='" + user + "' and t.taskId = ta.taskId and u.uid = ta.uid and t.done = false and t.endDate < ADDDATE(CURDATE(), 7)";
+
+//get the lists of current task allocated to the use
+String query = "SELECT * FROM tasks t,taskAssigned ta, users u where u.uid ='" + user + "' and t.taskId = ta.taskId and u.uid = ta.uid and t.done = 0";
 
 Statement st = connection.createStatement(); 
 ResultSet rs= st.executeQuery(query);
