@@ -22,7 +22,7 @@ String password = request.getParameter("password");
 		
 		if(!rs.next())
 		{
-			out.println("<script>window.location.replace(\"login.jsp?e=wip\")</script>");
+			out.println("<script>window.location.replace(\"login.html?e=wip\")</script>");
 		}
 		else
 		{

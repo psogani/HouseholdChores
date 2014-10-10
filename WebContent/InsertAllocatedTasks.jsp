@@ -26,7 +26,7 @@
 
 		int pstStatusCode = pst.executeUpdate();
 		if (pstStatusCode != 0) {
-			String msg = "Task Allocated successfully!!.";
+			String msg = "User registered successfully!!.";
 			out.println("<font size='6' color=blue>" + msg + "</font>");
 			flag = true;
 		} else {

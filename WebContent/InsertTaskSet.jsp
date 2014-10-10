@@ -15,11 +15,19 @@
     }
 </style>
 
+<p class="centeredImage"><img src="Screen Shot 2014-10-09 at 11.20.48 PM.png" alt="image description" height="161" width="471"></p>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="style/style.css">
 <title>Create task</title>
 </head>
 <body>
+	<ul id='nav'>
+	<li><a href ="home.jsp">Home</a></li>
+	<li><a href ="register.jsp">Add People</a></li>
+	<li><a href ="CreateTasks.jsp">Create Tasks</a></li>
+	<li><a href ="GetTaskStartDate.jsp">Allocate Tasks</a></li>
+	<li><a href ="login.jsp">Logout</a></li>
+</ul>
 
 <%
 int flag = 0;
@@ -80,7 +88,7 @@ for(int row = 0; row < taskName.length; row++){
 		 flag = 1;
 	 }
 	 else{
-		 String msg="Some unexpected error occured. Please try again!!";
+		 String msg="Insertion error!!";
 		 out.println("<font size='6' color=blue>" + msg + "</font>");
 		 pst.close();
 		 connection.close();
@@ -90,7 +98,7 @@ for(int row = 0; row < taskName.length; row++){
 }
  
 if(flag == 1){
-	String msg="All Tasks successfully recorded. Please use the navigation bar above to navigate";
+	String msg="All Records successfully inserted";
   	out.println("<font size='6' color=blue>" + msg + "</font>");
   	out.print("<BR>");
   	pst.close();
