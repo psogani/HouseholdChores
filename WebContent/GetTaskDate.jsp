@@ -38,7 +38,7 @@
 </ul>
 
 <form name="testDate1" action="CreateTasks.jsp" method="post" target="allocateTaskFrame">
-<p><b>Please select a date for the week of which you want to assign tasks</b></p>
+<p><b>Please select a date for the week of which you want to create tasks</b></p>
 <input type="text" id="datepicker1" name="startDate">
 <input id="createTaskButton" type="submit" value="Create Tasks" />
 </form>
