@@ -10,6 +10,12 @@
 <title>Create task</title>
 </head>
 <body>
+	<ul id='nav'>
+	<li><a href ="home.jsp">Home</a></li>
+	<li><a href ="register.jsp">Add People</a></li>
+	<li><a href ="GetTaskStartDate.jsp">Allocate Tasks</a></li>
+	<li><a href ="login.jsp">Logout</a></li>
+</ul>
 	<form name="createTask" action="InsertTaskSet.jsp" method="post">
 	<%out.print("<input type='hidden' name='startDate' value=date/>");%> 
 		<INPUT
