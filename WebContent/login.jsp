@@ -2,17 +2,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="style/style.css">
 <title>Login</title>
 </head>
 <body>
 
 
-<form name="login" action="login_action.jsp" method="post">
-<table border=0>
-<tr><td>UserId:</td><td><input type="text" name="userId"></td></tr>
-<tr><td>Password:</td><td><input type="password" name="password"></td></tr>
-<tr><td><input id="login" type="submit" value="Login" /></td></tr>
-</table></form> 
+<h1 align ="center">Hi, Welcome to HouseholdChores Login!</h1>
+<br><br><br><br><br><br><br><br>
+<div align = "center">
+<form name="login" action="login_action.jsp" method="post"><br>
+<input type="text" class="inputs" name="userId" placeholder="Username"><br>
+<input type="password" class="inputs" name="password" placeholder="Password"><br>
+<input id="login" type="submit" class="inputs" value="Login" />
+</form> 
+</div>
 
 
 

@@ -39,7 +39,7 @@ if(pstStatusCode!=0){
    	response.setHeader("Location", site); 
  	//Redirect to homepage
  	*/
-  	out.println("window.location.replace("home.jsp");");  
+  	//out.println("window.location.replace("home.jsp");");  
 
 }  
 else{

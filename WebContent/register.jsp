@@ -4,20 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="style/style.css">
 <title>Register User</title>
 </head>
 <body>
-
+<h1 align ="center">Hi, Welcome to HouseholdChores User Registration!</h1>
 <form name="registerInput" action="register_action.jsp" method="post">
-<table border=0>
-<tr><td>First name:</td><td><input type="text" name="firstName"></td></tr>
-<tr><td>Last name:</td><td><input type="text" name="lastName"></td></tr>
-<tr><td>Email:</td><td><input type="text" name="email"></td></tr>
-<tr><td>UserId:</td><td><input type="text" name="userId"></td></tr>
-<tr><td>Password:</td><td><input type="password" name="password"></td></tr>
-<tr><td>Re-enter Password:</td><td><input type="password" name="reEnteredPassowrd"></td></tr>
-<tr><td><input id="submitButton" type="submit" value="Register" /></td></tr>
-</table></form> 
+<div align="center"><br><br><br><br><br><br>
+<input type="text" class="inputs" name="firstName" placeholder="First Name"><br>
+<input type="text" class="inputs" name="lastName" placeholder="Last Name"><br>
+<input type="text" class="inputs" name="email" placeholder="Email"><br>
+<input type="text" class="inputs" name="userId" placeholder="User Id"><br>
+<input type="password" class="inputs" name="password" placeholder="Password"><br>
+<input type="password" class="inputs" name="reEnteredPassowrd" placeholder="Re-enter Password"><br>
+<input id="submitButton" type="submit" class="inputs" value="Register" />
+</div></form> 
 
 </body>
 </html>
