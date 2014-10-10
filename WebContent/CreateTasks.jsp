@@ -1,26 +1,20 @@
 <%@include file="dbConnect.jsp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%String date=request.getParameter("startDate"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script>
-  $(function() {
-    $( '#datepicker1,#datepicker2' ).datepicker();
-  });
-  </script>
+<title>Create task</title>
 </head>
 <body>
-<form name="createTask" action="InsertTaskSet.jsp" method="post">
-		<INPUT type="button" value="Add Row"
-			onclick="addRow('createTaskTable')" /> <INPUT type="button"
-			value="Delete Row" onclick="deleteRow('createTaskTable')" />
+	<form name="createTask" action="InsertTaskSet.jsp" method="post">
+	<%out.print("<input type='hidden' name='startDate' value=date/>");%> 
+		<INPUT
+			type="button" value="Add Row" onclick="addRow('createTaskTable')" />
+		<INPUT type="button" value="Delete Row"
+			onclick="deleteRow('createTaskTable')" />
 
 		<TABLE id="createTaskTable" width="350px" border="1">
 			<TR>
@@ -28,28 +22,23 @@
 				<TH>TaskName</TH>
 				<TH>PointValue</TH>
 				<TH>Recurring</TH>
-				<TH>StartDate</TH>
-				<TH>EndDate</TH>
 			</TR>
 			<TR>
 				<TD><INPUT type="checkbox" name="chk" /></TD>
 				<TD><INPUT type="text" name="taskName"></TD>
 				<TD><SELECT name="pointValue">
-					<OPTION value = "1">1</OPTION>
-					<OPTION value = "2">2</OPTION>
-					<OPTION value = "3">3</OPTION>
-					<OPTION value = "4">4</OPTION>
-					<OPTION value = "5">5</OPTION>
-					</SELECT>
-				</TD>
+						<OPTION value="1">1</OPTION>
+						<OPTION value="2">2</OPTION>
+						<OPTION value="3">3</OPTION>
+						<OPTION value="4">4</OPTION>
+						<OPTION value="5">5</OPTION>
+				</SELECT></TD>
 				<TD><INPUT type="checkbox" name="recurring" /></TD>
-				<TD><input type="text" id="datepicker1" name="startDate"></TD>
-				<TD><input type="text" id="datepicker2" name="endDate"></TD>	
 			</TR>
 		</TABLE>
 		<input id="createTaskButton" type="submit" value="Create Tasks" />
 	</form>
-<SCRIPT language="javascript">
+	<SCRIPT language="javascript">
 	function addRow(tableID) {
 
 		var table = document.getElementById(tableID);
