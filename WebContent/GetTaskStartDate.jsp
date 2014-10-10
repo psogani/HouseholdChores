@@ -30,7 +30,7 @@
 <body>
 <ul id='nav'>
 	<li><a href ="home.jsp">Home</a></li>
-	<li><a href ="CreateTasks.jsp">Create Tasks</a></li>
+	<li><a href ="GetTaskDate.jsp">Create Tasks</a></li>
 	<li><a href ="register.jsp">Add People</a></li>
 	<li><a href ="login.jsp">Logout</a></li>
 </ul>

@@ -30,6 +30,13 @@
   </script>
 </head>
 <body>
+<ul id='nav'>
+	<li><a href ="home.jsp">Home</a></li>
+	<li><a href ="register.jsp">Add People</a></li>
+	<li><a href ="GetTaskStartDate.jsp">Allocate Tasks</a></li>
+	<li><a href ="login.jsp">Logout</a></li>
+</ul>
+
 <form name="testDate1" action="CreateTasks.jsp" method="post" target="allocateTaskFrame">
 <input type="text" id="datepicker1" name="startDate">
 <input id="createTaskButton" type="submit" value="Create Tasks" />

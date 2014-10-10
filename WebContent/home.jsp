@@ -24,7 +24,7 @@
 String user = request.getParameter("u");
 %>
 <ul id='nav'>
-	<li><a href ="CreateTasks.jsp">Create Tasks</a></li>
+	<li><a href ="GetTaskDate.jsp">Create Tasks</a></li>
 	<li><a href ="register.jsp">Add People</a></li>
 	<li><a href ="GetTaskStartDate.jsp">Allocate Tasks</a></li>
 	<li><a href ="login.jsp">Logout</a></li>
@@ -71,12 +71,7 @@ else
 st.close();
 connection.close();
 
-
-
-
 %>
 
-</table>
-</div>
 </body>
 </html>

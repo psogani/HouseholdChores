@@ -14,19 +14,9 @@
     padding:0px;
     }
 </style>
-
-<p class="centeredImage"><img src="Screen Shot 2014-10-09 at 11.20.48 PM.png" alt="image description" height="161" width="471"></p>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="style/style.css">
 <title>Create task</title>
 </head>
 <body>
-	<ul id='nav'>
-	<li><a href ="home.jsp">Home</a></li>
-	<li><a href ="register.jsp">Add People</a></li>
-	<li><a href ="GetTaskStartDate.jsp">Allocate Tasks</a></li>
-	<li><a href ="login.jsp">Logout</a></li>
-</ul>
 	<form name="createTask" action="InsertTaskSet.jsp" method="post">
 	<%out.print("<input type='hidden' name='startDate' value=date/>");%> 
 		<INPUT
