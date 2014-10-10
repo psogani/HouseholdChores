@@ -3,6 +3,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style type="text/css">
+  .centeredImage
+    {
+    text-align:center;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding:0px;
+    }
+</style>
+
+<p class="centeredImage"><img src="Screen Shot 2014-10-09 at 11.20.48 PM.png" alt="image description" height="161" width="471"></p>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="style/style.css">
 <title>Home</title>
@@ -13,7 +24,7 @@
 String user = request.getParameter("u");
 %>
 <ul id='nav'>
-	<li><a href ="CreateTasks.jsp">Create Tasks</a></li>
+	<li><a href ="GetTaskDate.jsp">Create Tasks</a></li>
 	<li><a href ="register.jsp">Add People</a></li>
 	<li><a href ="GetTaskStartDate.jsp">Allocate Tasks</a></li>
 	<li><a href ="login.jsp">Logout</a></li>
@@ -60,12 +71,7 @@ else
 st.close();
 connection.close();
 
-
-
-
 %>
 
-</table>
-</div>
 </body>
 </html>
