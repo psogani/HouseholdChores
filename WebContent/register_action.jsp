@@ -1,4 +1,4 @@
-x<%@include file="dbConnect.jsp" %>
+<%@include file="dbConnect.jsp" %>
 
 <% 
 
@@ -14,7 +14,7 @@ String password = request.getParameter("password");
 //out.println(userId);
 //out.println(password);
 
-String insertQuery = "INSERT INTO users(fname,lname,email,user_id,password) VALUES(?,?,?,?,?)";
+String insertQuery = "INSERT INTO users(fname,lname,email,userId,password) VALUES(?,?,?,?,?)";
 PreparedStatement pst =(PreparedStatement) connection.prepareStatement(insertQuery); 
 
 pst.setString(1,firstName);  
@@ -30,15 +30,17 @@ int pstStatusCode = pst.executeUpdate();
 
 //connection.commit();
 
-if(pstStatusCode!=0){
+if(pstStatusCode!=0)
+{
+	String msg="User registered successfully!!.";
+  	out.println("<font size='6' color=blue>" + msg + "</font>");
 	
-	/*
 	//Redirect to homepage
-   	String site = new String("http://www.photofuntoos.com");
-   	response.setStatus(response.SC_MOVED_TEMPORARILY);
+   	String site = new String("http://localhost:8080/HouseholdChores/home.jsp");
+   	//response.setStatus(response.SC_MOVED_TEMPORARILY);
    	response.setHeader("Location", site); 
  	//Redirect to homepage
- 	*/
+ 	
   	//out.println("window.location.replace("home.jsp");");  
 
 }  
