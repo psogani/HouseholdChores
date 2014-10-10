@@ -4,50 +4,68 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="style/style.css">
+<title>Home</title>
+
 </head>
 <body>
+<%
+String user = request.getParameter("u");
+%>
+<ul id='nav'>
+	<li><a href ="CreateTasks.jsp">Create Tasks</a></li>
+	<li><a href ="register.jsp">Add People</a></li>
+	<li><a href ="GetTaskStartDate.jsp">Allocate Tasks</a></li>
+	<li><a href ="login.jsp">Logout</a></li>
+</ul>
 
 
 <%@include file="dbConnect.jsp" %>
-
 <% 
 
-String user = request.getParameter("userId");
-String password = request.getParameter("password");
+String query = "SELECT * FROM tasks t,taskAssigned ta, users u where u.userId ='" + user + "' and t.taskId = ta.taskId and u.uid = ta.uid and t.done = false and t.endDate < ADDDATE(CURDATE(), 7)";
 
-//out.println(user);
-//out.println(password);
+Statement st = connection.createStatement(); 
+ResultSet rs= st.executeQuery(query);
 
 
-String query = "SELECT user_id FROM users WHERE user_id = ?";
- 
-PreparedStatement pst = connection.prepareStatement(query); 
 
-pst.setString(1,user);
-//pst.setString(2,password);
-
-ResultSet rs = pst.executeQuery(query);
-    
-//out.println(pst);
-//if(resultSet.getString("count") == "1"){
+if(!rs.next())
+{
+	out.println("<br><br><br><h3>Congratulations! You have no tasks due for the next two weeks!.</h3>");
+}
+else
+{
+	out.println("<h2>Hi, " + rs.getString("fname") + "!</h2>");
+	out.println("<div id='taskTable' align = 'center'>");
+	out.println("<h2>You have following tasks due for the next two weeks:</h2>");
+	out.println("<table>");
+	out.println("<tr><th>Task Name |</th><th>End Date |</th><th>Points</th></tr>");
+	out.println("<tr>" +
+				"<td>" + rs.getString("taskName") + "</td>" +
+				"<td>" + rs.getString("endDate") + "</td>" +
+				"<td>" + rs.getString("pointValue") + "</td>" +
+				"</tr>");
 	
-	//String msg="Success";
-  	//out.println("<font size='6' color=blue>" + msg + "</font>");
-	
-	
-//}  
-//else{
-//	String msg="Wrong Id or Password";
- // 	out.println("<font size='6' color=blue>" + msg + "</font>");
-//}  
-//pst.close();
-//connection.close();
+	while(rs.next())
+	{
+		
+		out.println("<tr>" +
+				"<td>" + rs.getString("taskName") + "</td>" +
+				"<td>" + rs.getString("endDate") + "</td>" +
+				"<td>" + rs.getString("pointValue") + "</td>" +
+				"</tr>");
+	}
+}
+st.close();
+connection.close();
+
+
 
 
 %>
 
-
-
+</table>
+</div>
 </body>
 </html>

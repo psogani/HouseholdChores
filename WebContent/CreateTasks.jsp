@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="style/style.css">
+<title>Create Tasks</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
@@ -17,6 +18,12 @@
   </script>
 </head>
 <body>
+<ul id='nav'>
+	<li><a href ="home.jsp">Home</a></li>
+	<li><a href ="register.jsp">Add People</a></li>
+	<li><a href ="GetTaskStartDate.jsp">Allocate Tasks</a></li>
+	<li><a href ="login.jsp">Logout</a></li>
+</ul>
 <form name="createTask" action="InsertTaskSet.jsp" method="post">
 		<INPUT type="button" value="Add Row"
 			onclick="addRow('createTaskTable')" /> <INPUT type="button"

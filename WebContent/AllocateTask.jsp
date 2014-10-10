@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="style/style.css">
 <SCRIPT language="javascript">
 	function addRow(tableID) {
 
@@ -76,22 +77,23 @@
 				<TD><INPUT type="checkbox" name="chk" /></TD>
 				
 				<%
-				String selectQuery = "SELECT * from users";
+				String selectQuery ="SELECT * from users";
 				Statement st = connection.createStatement(); 
 				ResultSet rs= st.executeQuery(selectQuery);
 				out.print("<TD><SELECT name='users'>");
 				while(rs.next())
 				{
-					out.print("<OPTION value="+rs.getString("user_id")+">"+rs.getString("fname")+rs.getString("lname")+"</OPTION>");
+					out.print("<OPTION value="+rs.getString("uid")+">"+rs.getString("fname")+rs.getString("lname")+"</OPTION>");
 				}
 				out.print("</SELECT></TD>");
 				out.print("</TD>");
-				selectQuery = "SELECT * from tasks";
+				String date=request.getParameter("startDate");
+				selectQuery = "SELECT * from tasks where startDate > '"+date+"'";
 				rs= st.executeQuery(selectQuery);
 				out.print("<TD><SELECT name='tasks'>");
 				while(rs.next())
 				{
-					out.print("<OPTION value="+rs.getString("Task_Number")+">"+rs.getString("Task_Name")+"</OPTION>");
+					out.print("<OPTION value="+rs.getString("taskId")+">"+rs.getString("taskName")+"</OPTION>");
 				}
 				out.print("</SELECT></TD>");
 				%>
