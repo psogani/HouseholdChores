@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Test Date 1</title>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="style/style.css">
+<title>Allocate Tasks</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
@@ -17,9 +17,16 @@
   </script>
 </head>
 <body>
+<ul id='nav'>
+	<li><a href ="home.jsp">Home</a></li>
+	<li><a href ="CreateTasks.jsp">Create Tasks</a></li>
+	<li><a href ="register.jsp">Add People</a></li>
+	<li><a href ="login.jsp">Logout</a></li>
+</ul>
+
 <form name="testDate1" action="AllocateTask.jsp" method="post" target="allocateTaskFrame">
 <input type="text" id="datepicker1" name="startDate">
-<input id="createTaskButton" type="submit" value="Create Tasks" />
+<input id="createTaskButton" type="submit" value="Select Date" />
 </form>
 <iframe name="allocateTaskFrame" height=800 width=800>
   </iframe>
