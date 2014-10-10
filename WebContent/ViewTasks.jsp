@@ -9,8 +9,10 @@ ResultSet rs = pst.executeQuery(selectQuery);
             <TR>
                 <TH>Task Number</TH>
                 <TH>Task Name</TH>
-                <TH>Task Priority</TH>
-                <TH>Task Status</TH>
+                <TH>Task Point Value</TH>
+                <TH>Task Recurring</TH>
+                <TH>Task Start Date</TH>
+                <TH>Task End Date</TH>
             </TR>
             <% while(rs.next()){ %>
             <TR>
@@ -18,6 +20,8 @@ ResultSet rs = pst.executeQuery(selectQuery);
                 <TD> <%= rs.getString(2) %></TD>
                 <TD> <%= rs.getString(3) %></TD>
                 <TD> <%= rs.getString(4) %></TD>
+                <TD> <%= rs.getString(5) %></TD>
+                <TD> <%= rs.getString(6) %></TD>
             </TR>
             <% } %>
         </TABLE>

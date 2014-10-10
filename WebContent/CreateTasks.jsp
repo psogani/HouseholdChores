@@ -44,7 +44,7 @@
 				</TD>
 				<TD><INPUT type="checkbox" name="recurring" /></TD>
 				<TD><input type="text" id="datepicker1" name="startDate"></TD>
-				<TD><input type="text" id="datepicker2" name="endtDate"></TD>	
+				<TD><input type="text" id="datepicker2" name="endDate"></TD>	
 			</TR>
 		</TABLE>
 		<input id="createTaskButton" type="submit" value="Create Tasks" />
