@@ -1,4 +1,4 @@
-<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*"%>
 <%@ page import="java.io.*" %>
 
 <%
@@ -7,14 +7,13 @@ String dbms="mysql";
 String serverName="localhost";
 String portNumber="3306";
 String dbUserName="root";
-String dbPassword="root";
+String dbPassword="pranay27";
 String databaseName="householdchores";
 
 String connectionURL = "jdbc:"+ dbms +"://"+ serverName +":"+ portNumber +"/"+databaseName;
 Connection connection = null;
 Class.forName("com.mysql.jdbc.Driver").newInstance();
 connection = DriverManager.getConnection(connectionURL, dbUserName, dbPassword);
-connection.setAutoCommit(false);
 
 if(connection.isClosed()){
 	out.println("Unable to connect to database.");

@@ -1,20 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style type="text/css">
+  .centeredImage
+    {
+    text-align:center;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding:0px;
+    }
+</style>
+
+<p class="centeredImage"><img src="Screen Shot 2014-10-09 at 11.20.48 PM.png" alt="image description" height="161" width="471"></p>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="style/style.css">
+<title>Login</title>
 </head>
 <body>
 
 
-<form name="login" action="home.jsp" method="post">
-<table border=0>
-<tr><td>UserId:</td><td><input type="text" name="userId"></td></tr>
-<tr><td>Password:</td><td><input type="password" name="password"></td></tr>
-<tr><td><input id="login" type="submit" value="Login" /></td></tr>
-</table></form> 
+<h1 align ="center">Hi, Welcome to HouseholdChores Login!</h1>
+<br><br><br><br><br><br><br><br>
+<div align = "center">
+<form name="login" action="login_action.jsp" method="post"><br>
+<input type="text" class="inputs" name="userId" placeholder="Username"><br>
+<input type="password" class="inputs" name="password" placeholder="Password"><br>
+<input id="login" type="submit" class="inputs" value="Login" />
+</form> 
+</div>
 
 
 
