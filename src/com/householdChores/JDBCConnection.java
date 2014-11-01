@@ -9,7 +9,7 @@ public class JDBCConnection
 	static final String DB_URL = "jdbc:mysql://localhost/householdchores";
 
 	//  Database credentials
-	static final String USER = "root";
+	static final String USER = "pranay27";
 	static final String PASS = "password";
 
 
