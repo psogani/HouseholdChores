@@ -30,17 +30,16 @@ public class AllocateTasksController {
 	}
 	
 	@RequestMapping(value="/Home", method = RequestMethod.POST)
-	public ModelAndView submitAdmissionForm(@RequestParam Map<String, String> params) 
+	public ModelAndView submitAdmissionForm(@RequestParam String[] users, String[] tasks) 
 	{
-		AllocateTasksDataRetrieveAndInsert atra = new AllocateTasksDataRetrieveAndInsert(params);
-		
+		AllocateTasksDataRetrieveAndInsert atra = new AllocateTasksDataRetrieveAndInsert(tasks,users);
 		boolean updated = atra.assignTasks();
 		ModelAndView model;
 		
 		if(updated)
 		{
-				model = new ModelAndView("Home");
-				model.addObject("msg","Tasks Assigned.");	
+			model = new ModelAndView("Home");
+			model.addObject("msg","Tasks Assigned.");
 		}
 		else
 		{

@@ -12,10 +12,12 @@ import com.mysql.jdbc.PreparedStatement;
 
 public class AllocateTasksDataRetrieveAndInsert {
 	
-	Map<String,String> parameters;
-	JDBCConnection jdbc;
-	Connection conn;
-	ArrayList<UserTasks> tasks = new ArrayList<UserTasks>();
+	private Map<String,String> parameters;
+	private String[] taskArray;
+	private String[] userArray;
+	private JDBCConnection jdbc;
+	private Connection conn;
+	private ArrayList<UserTasks> tasks = new ArrayList<UserTasks>();
 	
 	AllocateTasksDataRetrieveAndInsert(Map<String, String> parameters)
 	{
@@ -23,9 +25,16 @@ public class AllocateTasksDataRetrieveAndInsert {
 	}
 	
 	AllocateTasksDataRetrieveAndInsert()
-	{
-		
+	{		
 	}
+	
+	AllocateTasksDataRetrieveAndInsert(String[] tasks, String[] users)
+	{		
+		this.taskArray = tasks;
+		this.userArray = users;
+	}
+	
+	
 	
 	
 	ArrayList<UserTasks> getTaskData()
@@ -86,64 +95,65 @@ public class AllocateTasksDataRetrieveAndInsert {
 		{
 			try
 			{
-				String checkSQL;
-				checkSQL = "SELECT * FROM taskAssigned where taskId = '" + parameters.get("taskId") + "'" ;
-				
-				Statement stmt = null;
-				ResultSet rs = null;
-				stmt = conn.createStatement();
-				
-				rs = stmt.executeQuery(checkSQL);
-				
-				if(rs.next())
+				for(int i = 0; i < userArray.length; i++)
 				{
-					//UPDATE - Modify the SQL BASED ON WHAT PARAMETERS WE ARE GETTING
-					String updateSQL;
-					updateSQL = "UPDATE TABLE taskAssigned SET uid = ? WHERE taskId = ?";
+					String checkSQL;
+					checkSQL = "SELECT * FROM taskAssigned where taskId = '" + taskArray[i] + "'" ;
 					
-					PreparedStatement pst = (PreparedStatement) conn.prepareStatement(updateSQL); 
-					pst.setString(1,parameters.get("uid"));        
-					pst.setString(2,parameters.get("taskId"));
+					Statement stmt = null;
+					ResultSet rs = null;
+					stmt = conn.createStatement();
 					
-					int pstStatusCode = pst.executeUpdate();
+					rs = stmt.executeQuery(checkSQL);
 					
-					if (pstStatusCode != 0) updated = true;
-					pst.close();
-					stmt.close();
-					rs.close();
-					conn.close();
-					return updated;
-
+					if(rs.next())
+					{
+						//UPDATE - Modify the SQL BASED ON WHAT PARAMETERS WE ARE GETTING
+						String updateSQL;
+						updateSQL = "UPDATE TABLE taskAssigned SET uid = ? WHERE taskId = ?";
+						
+						PreparedStatement pst = (PreparedStatement) conn.prepareStatement(updateSQL); 
+						pst.setString(1,userArray[i]);        
+						pst.setString(2,taskArray[i]);
+						
+						int pstStatusCode = pst.executeUpdate();
+						
+						if (pstStatusCode != 0) updated = true;
+						pst.close();
+						stmt.close();
+						rs.close();
+						conn.close();
+						return updated;
+					}
+					
+					else
+					{
+						String insertSQL;
+						insertSQL = "INSERT INTO taskAssigned VALUES(uid, taskId) VALUES(?,?)";
+						
+						PreparedStatement pst = (PreparedStatement) conn.prepareStatement(insertSQL); 
+						pst.setString(1,userArray[i]);        
+						pst.setString(2,taskArray[i]);
+						
+						int pstStatusCode = pst.executeUpdate();
+						
+						if (pstStatusCode != 0) updated = true;
+						pst.close();
+						stmt.close();
+						rs.close();
+						conn.close();
+						return updated;
+					}	
+					
+					
 				}
-				
-				else
-				{
-					String insertSQL;
-					insertSQL = "INSERT INTO taskAssigned VALUES(uid, taskId) VALUES(?,?)";
-					
-					PreparedStatement pst = (PreparedStatement) conn.prepareStatement(insertSQL); 
-					pst.setString(1,parameters.get("uid"));        
-					pst.setString(2,parameters.get("taskId"));
-					
-					int pstStatusCode = pst.executeUpdate();
-					
-					if (pstStatusCode != 0) updated = true;
-					pst.close();
-					stmt.close();
-					rs.close();
-					conn.close();
-					return updated;
-				}				
+							
 			}
 			catch(Exception e)
 			{
 				System.out.print(e);
 			}
 		}
-
 		return updated;
 	}
-	
-	
-
 }
