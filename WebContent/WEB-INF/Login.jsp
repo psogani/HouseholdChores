@@ -25,7 +25,7 @@
 
 <div align = "center">
 
-<form action="/HouseHoldChoresWithSpring/Home.html" method="post">
+<form action="/HouseholdChores/Home.html" method="post">
 
 <input type="text" class="inputs" name="userId" placeholder="Username"><br>
 
