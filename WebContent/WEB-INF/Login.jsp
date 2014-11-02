@@ -33,6 +33,9 @@
 
 <input id="login" type="submit" class="inputs" value="Login" />
 
+<br><br>
+<a href="/HouseholdChores/Register">Register</a>
+
 </form> 
 
 </div>
