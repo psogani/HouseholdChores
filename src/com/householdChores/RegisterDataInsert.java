@@ -3,6 +3,7 @@ package com.householdChores;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.mysql.jdbc.PreparedStatement;
@@ -73,7 +74,7 @@ public class RegisterDataInsert {
 	
 	boolean registerUser(){
 		
-		System.out.println("In register user");
+		//System.out.println("In register user");
 		
 		boolean inserted = false;
 		
@@ -114,5 +115,50 @@ public class RegisterDataInsert {
 		}
 
 		return inserted;
+	}
+	
+	ArrayList<User> getAllUsers()
+	{
+		ArrayList<User> userList = new ArrayList<User>();
+		
+		jdbc = new JDBCConnection();
+		conn = jdbc.makeConnection();
+
+		if(conn!=null)
+		{
+			Statement stmt = null;
+			ResultSet rs = null;
+
+			try
+			{
+				stmt = conn.createStatement();
+
+				String sql;
+				sql = "SELECT * FROM users";
+				rs = stmt.executeQuery(sql);
+				
+				while (rs.next() != false) 
+				{
+					User user = new User();
+					user.setUid(rs.getString("uid"));
+					user.setfName(rs.getString("fName"));
+					user.setlName(rs.getString("lName"));
+					user.setEmail(rs.getString("email"));
+					user.setUserId(rs.getString("userId"));
+					
+					userList.add(user);
+				}
+
+				rs.close();
+				stmt.close();
+				conn.close();
+				
+			}
+			catch(Exception e)
+			{
+				System.out.print(e);
+			}
+		}
+		return userList;
 	}
 }
