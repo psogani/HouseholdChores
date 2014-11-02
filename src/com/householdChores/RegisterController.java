@@ -32,7 +32,7 @@ public class RegisterController {
 		{
 			if(rda.registerUser())
 			{
-				model = new ModelAndView("Home");
+				model = new ModelAndView("Login");
 				model.addObject("fname",params.get("firstName"));
 			}
 			else

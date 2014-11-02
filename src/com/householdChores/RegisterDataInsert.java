@@ -48,12 +48,13 @@ public class RegisterDataInsert {
 				stmt = conn.createStatement();
 
 				String sql;
-				sql = "SELECT * FROM users where userId ='" + params.get("userId");
+				sql = "SELECT * FROM users where userId ='" + params.get("userId") + "'";
 				rs = stmt.executeQuery(sql);
 				
 				if (rs.next()) 
 				{
 					doesUserExist = true;
+					System.out.println("Does not exist");
 				}
 
 				rs.close();
@@ -71,6 +72,8 @@ public class RegisterDataInsert {
 	}
 	
 	boolean registerUser(){
+		
+		System.out.println("In register user");
 		
 		boolean inserted = false;
 		
@@ -97,6 +100,7 @@ public class RegisterDataInsert {
 				if(pstStatusCode != 0)
 				{	
 					inserted = true;
+					System.out.println("Inserted");
 				}  
 				
 				pst.close();
