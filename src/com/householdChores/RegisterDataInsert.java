@@ -5,15 +5,29 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Map;
 
-public class RegisterDataAccess {
+import com.mysql.jdbc.PreparedStatement;
+
+public class RegisterDataInsert {
 	
 	Map<String,String> params;
 	JDBCConnection jdbc;
 	Connection conn;
 	
-	public RegisterDataAccess(Map<String, String> params) {
+	String firstName;
+	String lastName;
+	String email;
+	String userId;
+	String password;
+	
+	public RegisterDataInsert(Map<String, String> params) {
 		
 		this.params = params;
+		this.firstName = params.get("firstName");
+		this.lastName = params.get("lastName");
+		this.email = params.get("email");
+		this.userId = params.get("userId");
+		this.password = params.get("password");
+		
 	}
 	
 	
@@ -31,7 +45,6 @@ public class RegisterDataAccess {
 
 			try
 			{
-				//System.out.println("Creating statement...");
 				stmt = conn.createStatement();
 
 				String sql;
@@ -66,25 +79,27 @@ public class RegisterDataAccess {
 
 		if(conn != null)
 		{
-			Statement stmt = null;
-			ResultSet rs = null;
-
 			try
 			{
-				//System.out.println("Creating statement...");
-				stmt = conn.createStatement();
-
 				String sql;
-				sql = "";
-				rs = stmt.executeQuery(sql);
+				sql = "INSERT INTO users(fname,lname,email,userId,password) VALUES(?,?,?,?,?)";
 				
-				if (rs.next()) 
-				{
-					inserted = true;
-				}
+				PreparedStatement pst =(PreparedStatement) conn.prepareStatement(sql); 
 
-				rs.close();
-				stmt.close();
+				pst.setString(1,firstName);  
+				pst.setString(2,lastName);        
+				pst.setString(3,email);
+				pst.setString(4,userId);
+				pst.setString(5,password);
+				
+				int pstStatusCode = pst.executeUpdate();
+				
+				if(pstStatusCode != 0)
+				{	
+					inserted = true;
+				}  
+				
+				pst.close();
 				conn.close();
 				
 			}

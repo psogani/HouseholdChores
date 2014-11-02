@@ -19,11 +19,11 @@ public class RegisterController {
 		return model;
 	}
 	
-	@RequestMapping(value="/Home", method = RequestMethod.POST)
+	@RequestMapping(value="/Register", method = RequestMethod.POST)
 	public ModelAndView submitAdmissionForm(@RequestParam Map<String, String> params) 
 	{
 		
-		RegisterDataAccess rda = new RegisterDataAccess(params);
+		RegisterDataInsert rda = new RegisterDataInsert(params);
 		
 		boolean doesUserExist = rda.doesUserExist();
 		ModelAndView model;

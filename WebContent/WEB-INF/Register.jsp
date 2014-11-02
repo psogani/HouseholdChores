@@ -25,7 +25,7 @@
 	<li><a href ="GetTaskStartDate.jsp">Allocate Tasks</a></li>
 	<li><a href ="login.jsp">Logout</a></li>
 </ul>
-<form name="registerInput" action="/HouseHoldChoresWithSpring/Home" method="post">
+<form name="registerInput" action="/HouseHoldChoresWithSpring/Register" method="post">
 <div align="center"><br><br><br><br><br><br>
 <input type="text" class="inputs" name="firstName" placeholder="First Name"><br>
 <input type="text" class="inputs" name="lastName" placeholder="Last Name"><br>
