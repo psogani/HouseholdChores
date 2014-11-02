@@ -10,7 +10,7 @@ public class CurrentUserTaskDataAccess
 
 	public ArrayList<UserTasks> getCurrentUserTask(String userid)
 	{
-		JDBCConnection jdbc =new JDBCConnection();
+		JDBCConnection jdbc = new JDBCConnection();
 		Connection conn = jdbc.makeConnection();
 		
 		//create an object to store data

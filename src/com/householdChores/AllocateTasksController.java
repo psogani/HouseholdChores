@@ -17,10 +17,15 @@ public class AllocateTasksController {
 	public ModelAndView getAdmissionForm() 
 	{
 		AllocateTasksDataRetrieveAndInsert atra = new AllocateTasksDataRetrieveAndInsert();
+		
+		RegisterDataInsert rd = new RegisterDataInsert(null);
+		rd.getAllUsers();
+		
 		ArrayList<UserTasks> utList = atra.getTaskData();
 		
 		ModelAndView model = new ModelAndView("AllocateTasks");
 		model.addObject("taskList", utList);
+		model.addObject("userList", rd.getAllUsers());
 		return model;
 	}
 	
