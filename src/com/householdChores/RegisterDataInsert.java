@@ -23,14 +23,21 @@ public class RegisterDataInsert {
 	public RegisterDataInsert(Map<String, String> params) {
 		
 		this.params = params;
-		this.firstName = params.get("firstName");
-		this.lastName = params.get("lastName");
-		this.email = params.get("email");
-		this.userId = params.get("userId");
-		this.password = params.get("password");
+		if(params != null)
+		{
+			
+			this.firstName = params.get("firstName");
+			this.lastName = params.get("lastName");
+			this.email = params.get("email");
+			this.userId = params.get("userId");
+			this.password = params.get("password");
+			
+		}
+	
 		
 	}
 	
+	public RegisterDataInsert(){}
 	
 	boolean doesUserExist(){
 		

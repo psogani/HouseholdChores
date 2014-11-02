@@ -14,14 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class AllocateTasksController {
 	
 	@RequestMapping(value="/AllocateTasks", method = RequestMethod.GET)
-	public ModelAndView getAdmissionForm() 
+	public ModelAndView getAllocateTaskPage() 
 	{
 		AllocateTasksDataRetrieveAndInsert atra = new AllocateTasksDataRetrieveAndInsert();
-		
+		System.out.println("Hello");
 		RegisterDataInsert rd = new RegisterDataInsert(null);
 		rd.getAllUsers();
 		
 		ArrayList<UserTasks> utList = atra.getTaskData();
+		//System.out.println("hhhhhhhh" + utList.size());
 		
 		ModelAndView model = new ModelAndView("AllocateTasks");
 		model.addObject("taskList", utList);
@@ -30,7 +31,7 @@ public class AllocateTasksController {
 	}
 	
 	@RequestMapping(value="/Home", method = RequestMethod.POST)
-	public ModelAndView submitAdmissionForm(@RequestParam String[] users, String[] tasks) 
+	public ModelAndView submitAllocateTaskPage(@RequestParam String[] users, String[] tasks) 
 	{
 		AllocateTasksDataRetrieveAndInsert atra = new AllocateTasksDataRetrieveAndInsert(tasks,users);
 		boolean updated = atra.assignTasks();
@@ -39,6 +40,10 @@ public class AllocateTasksController {
 		if(updated)
 		{
 			model = new ModelAndView("Home");
+			//TODO: "ADDDD CURRENT TASK LIST DEPENDING UPON THE CURRENT USER" SESSION? 
+			CurrentUserTaskDataAccess cutd = new CurrentUserTaskDataAccess();
+			ArrayList<UserTasks> taskList = cutd.getCurrentUserTask("1");
+			model.addObject("currentTasks", taskList);
 			model.addObject("msg","Tasks Assigned.");
 		}
 		else
