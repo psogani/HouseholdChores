@@ -10,7 +10,7 @@ public class JDBCConnection
 
 	//  Database credentials
 	static final String USER = "root";
-	static final String PASS = "root";
+	static final String PASS = "password";
 
 
 	public Connection makeConnection()

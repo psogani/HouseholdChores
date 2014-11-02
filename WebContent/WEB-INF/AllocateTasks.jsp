@@ -90,7 +90,7 @@
 				
 				<%
 				ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
-				ArrayList<UserTasks> userTask = (ArrayList<UserTasks>) request.getAttribute("taskList");
+				ArrayList<UserTasks> userTask = (ArrayList<UserTasks>) request.getAttribute("currentTasks");
 				
 				out.print("<TD><SELECT name='users'>");
 				for (int i = 0; i < userList.size(); i++) 

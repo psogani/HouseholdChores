@@ -98,7 +98,7 @@ public class AllocateTasksDataRetrieveAndInsert {
 				for(int i = 0; i < userArray.length; i++)
 				{
 					String checkSQL;
-					checkSQL = "SELECT * FROM taskAssigned where taskId = " + taskArray[i];
+					checkSQL = "SELECT * FROM taskAssigned where taskId = '" + taskArray[i] + "'" ;
 					
 					Statement stmt = null;
 					ResultSet rs = null;
@@ -110,11 +110,11 @@ public class AllocateTasksDataRetrieveAndInsert {
 					{
 						//UPDATE - Modify the SQL BASED ON WHAT PARAMETERS WE ARE GETTING
 						String updateSQL;
-						updateSQL = "UPDATE taskAssigned SET uid = ? WHERE taskId = ?";
+						updateSQL = "UPDATE TABLE taskAssigned SET uid = ? WHERE taskId = ?";
 						
 						PreparedStatement pst = (PreparedStatement) conn.prepareStatement(updateSQL); 
-						pst.setInt(1,Integer.parseInt(userArray[i]));        
-						pst.setInt(2,Integer.parseInt(taskArray[i]));
+						pst.setString(1,userArray[i]);        
+						pst.setString(2,taskArray[i]);
 						
 						int pstStatusCode = pst.executeUpdate();
 						
@@ -132,8 +132,8 @@ public class AllocateTasksDataRetrieveAndInsert {
 						insertSQL = "INSERT INTO taskAssigned VALUES(uid, taskId) VALUES(?,?)";
 						
 						PreparedStatement pst = (PreparedStatement) conn.prepareStatement(insertSQL); 
-						pst.setInt(1,Integer.parseInt(userArray[i]));        
-						pst.setInt(2,Integer.parseInt(taskArray[i]));
+						pst.setString(1,userArray[i]);        
+						pst.setString(2,taskArray[i]);
 						
 						int pstStatusCode = pst.executeUpdate();
 						
