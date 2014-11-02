@@ -4,16 +4,17 @@ import java.sql.*;
 
 public class LoginDataAccess 
 {
-	public boolean getUser(String userId,String password)
+	public String getUser(String userName,String password)
 	{
-		boolean isuserValid=false;
 		JDBCConnection jdbc =new JDBCConnection();
 		Connection conn = jdbc.makeConnection();
+		String userId=null;
 		if(conn!=null)
 		{
 
 			Statement stmt = null;
 			ResultSet rs=null;
+		
 
 			try
 			{
@@ -22,12 +23,12 @@ public class LoginDataAccess
 				stmt = conn.createStatement();
 
 				String sql;
-				sql = "SELECT * FROM users where userId ='" + userId+ "' and password = '" + password + "'";
+				sql = "SELECT * FROM users where userId ='" + userName+ "' and password = '" + password + "'";
 				rs = stmt.executeQuery(sql);
 				
-				if (rs.next()) 
+				while(rs.next())
 				{
-					isuserValid=true;
+					userId=rs.getString("uid");
 				}
 
 				rs.close();
@@ -40,7 +41,7 @@ public class LoginDataAccess
 			}
 		}
 
-		return isuserValid;
+		return userId;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.householdChores;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,12 +23,15 @@ public class LoginController {
 	public ModelAndView submitAdmissionForm(@RequestParam("userId") String userId,@RequestParam("password") String password) 
 	{
 		LoginDataAccess lad=new LoginDataAccess();
-		boolean isUserValid=lad.getUser(userId, password);
+		String userIdFromTable =lad.getUser(userId, password);
 		ModelAndView model;
-		if(isUserValid)
+		if(userIdFromTable!=null)
 		{
 			model = new ModelAndView("Home");
-			model.addObject("msg","Details submitted by you:: Name: "+userId+ ", Hobby: " + password);
+			CurrentUserTaskDataAccess userTaskData=new CurrentUserTaskDataAccess();
+			ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask(userIdFromTable);
+			model.addObject("currentTasks",tasks);
+			model.addObject("headerMessage",userId);
 		}
 		else
 		{
