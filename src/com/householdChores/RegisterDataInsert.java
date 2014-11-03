@@ -14,19 +14,19 @@ public class RegisterDataInsert {
 	JDBCConnection jdbc;
 	Connection conn;
 	
-	String firstName;
-	String lastName;
+	String firstname;
+	String lastname;
 	String email;
-	String userId;
+	String userid;
 	String password;
 	
 	public RegisterDataInsert(Map<String, String> params) {
 		
 		this.params = params;
-		this.firstName = params.get("firstName");
-		this.lastName = params.get("lastName");
+		this.firstname = params.get("firstname");
+		this.lastname = params.get("lastname");
 		this.email = params.get("email");
-		this.userId = params.get("userId");
+		this.userid = params.get("userid");
 		this.password = params.get("password");
 		
 	}
@@ -49,7 +49,7 @@ public class RegisterDataInsert {
 				stmt = conn.createStatement();
 
 				String sql;
-				sql = "SELECT * FROM users where userId ='" + params.get("userId") + "'";
+				sql = "SELECT * FROM users where userId ='" + params.get("userid") + "'";
 				rs = stmt.executeQuery(sql);
 				
 				if (rs.next()) 
@@ -90,10 +90,10 @@ public class RegisterDataInsert {
 				
 				PreparedStatement pst =(PreparedStatement) conn.prepareStatement(sql); 
 
-				pst.setString(1,firstName);  
-				pst.setString(2,lastName);        
+				pst.setString(1,firstname);  
+				pst.setString(2,lastname);        
 				pst.setString(3,email);
-				pst.setString(4,userId);
+				pst.setString(4,userid);
 				pst.setString(5,password);
 				
 				int pstStatusCode = pst.executeUpdate();
