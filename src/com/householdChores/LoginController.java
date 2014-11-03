@@ -12,15 +12,16 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 
 	@RequestMapping(value="/Login", method = RequestMethod.GET)
-	public ModelAndView getAdmissionForm() 
+	public ModelAndView getLoginData(ModelAndView m) 
 	{
-		ModelAndView model = new ModelAndView("Login");
-		return model;
+		if(m.isEmpty())
+			m = new ModelAndView("Login");
+		return m;
 	}
 	
 
 	@RequestMapping(value="/Home.html", method = RequestMethod.POST)
-	public ModelAndView submitAdmissionForm(@RequestParam("userId") String userId,@RequestParam("password") String password) 
+	public ModelAndView processLoginForm(@RequestParam("userId") String userId,@RequestParam("password") String password) 
 	{
 		LoginDataAccess lad=new LoginDataAccess();
 		String userIdFromTable =lad.getUser(userId, password);
