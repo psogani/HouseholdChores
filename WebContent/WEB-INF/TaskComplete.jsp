@@ -16,7 +16,7 @@
 			        if(input.type == "checkbox" && input.checked)
 			            return true;
 			    }
-			    alert('none are checked');
+			    alert('none of the tasks are selected');
 			    return false;
 			};
 	</script>	
@@ -35,7 +35,7 @@
 			{
 				UserTasks task = userTask.get(i);
 				out.println("<tr>" +
-								"<td align = 'center'>" + "<input type='checkbox' name = 'markComplete'"+i+" id = "+task.getTaskId()+">" + 
+								"<td align = 'center'>" + "<input type='checkbox' name = 'markComplete' value = "+task.getTaskId()+">" + 
 								"<td align = 'center'>" + task.getTaskName() + "</td>" +
 						 		"<td align = 'center'>" + task.getEndDate()  + "</td>" + 
 						 		"<td align = 'center'>" + task.getPointValue() + "</td>" + 
@@ -43,8 +43,6 @@
 			}
 			out.println("</table>");
 			out.println("<input id = 'Complete' type = 'submit' class = 'inputs' value = 'Set as Complete' />");
-			//for(int i = 0; i < userTask.size())
-			boolean myCheckBox = request.getParameter( "" ) != null;
 			out.println("</form");
 		%>
 	</body>
