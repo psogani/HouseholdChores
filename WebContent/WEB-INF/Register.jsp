@@ -32,7 +32,7 @@
 	</head>
 	 
 	<body>
-		<div class="container">
+		<div class="container no_margin">
 			<ul class="nav nav-tabs" role="tablist">
 				<li class="active"><a href ="#">Registration</a></li>
 				<li><a href ="/HouseholdChores/Login">Back to Login</a></li>
@@ -46,9 +46,12 @@
 			
 			<h3>${msg}</h3>
 			
-			<br><br><br><br>
+			<br>
 			
-			<form name="registerInput" action="/HouseholdChores/RegisterSubmit" method="post">
+			<h2>REGISTRATION FORM</h2>
+			
+			<br><br>
+			<form name="registerInput" action="/HouseholdChores/RegisterSubmit" method="post" >
 				<div class="form-group">
 				   <input type="text" class="form-group" name="firstname" placeholder="First Name"><br>
 				 

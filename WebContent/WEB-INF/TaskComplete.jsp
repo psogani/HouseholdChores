@@ -48,7 +48,7 @@
 	</script>	
 	
 	<body>
-		<div class="container">
+		<div class="container no_margin">
 		    <ul class="nav nav-tabs" role="tablist">
 		       <li><a href ="/HouseholdChores/Home.html">Home</a></li> 
 		       <li><a href ="/HouseholdChores/CreateTasks">Create Tasks</a></li>
@@ -63,7 +63,7 @@
 		<%
 			out.println("<form action = '/HouseholdChores/markComplete' method='post' onsubmit = 'return checkForm(this);' >");
 			out.println("<div class='table-responsive'>");
-			out.println("<table border='2' style='width=20%' class='table table-striped' id='taskCompleteTable' >" );
+			out.println("<table border='2' style='width=20%' class='table table-striped table-bordered' id='taskCompleteTable' >" );
 			out.println("<tr class='border_bottom'>"+
 						 	"<th> Select </th>" + 
 							"<th> Task Name </th>" + 
