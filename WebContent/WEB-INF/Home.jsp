@@ -2,6 +2,8 @@
 <%@page import="com.householdChores.UserTasks"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page session="true"%>
+
 <html>
 <head>
 <style type="text/css">
@@ -27,10 +29,9 @@
 		<li><a href="/HouseholdChores/Login">Logout</a></li>
 	</ul>
 	<br>
-	<h1>${headerMessage}</h1>
+	<h1>${session_userId}</h1>
 	<%
 			ArrayList<UserTasks> userTask = (ArrayList<UserTasks>) request.getAttribute("currentTasks");
-			
 			out.println("<div id='taskTable' align = 'center'>");
 			out.println("<h2>You have following tasks due for the next two weeks:</h2>");
 			out.println("<table>");
