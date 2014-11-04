@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
 <title>Insert new task</title>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
