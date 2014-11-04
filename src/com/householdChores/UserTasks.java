@@ -6,6 +6,8 @@ public class UserTasks
 	
 	private String userId;
 	
+	private String userName;
+	
 	private String taskName;
 	
 	private String taskId;
@@ -14,6 +16,27 @@ public class UserTasks
 	
 	private String pointValue;
 	
+	private boolean isDone;
+	
+	private boolean isRecurring;
+	
+	
+	public boolean isDone() {
+		return isDone;
+	}
+
+	public void setDone(boolean isDone) {
+		this.isDone = isDone;
+	}
+
+	public boolean isRecurring() {
+		return isRecurring;
+	}
+
+	public void setRecurring(boolean isRecurring) {
+		this.isRecurring = isRecurring;
+	}
+
 	public Boolean getIsTaskDue() {
 		return isTaskDue;
 	}
@@ -51,6 +74,14 @@ public class UserTasks
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 }

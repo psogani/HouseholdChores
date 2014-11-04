@@ -20,10 +20,7 @@
 </head>
 <body>
 <ul id='nav'>
-	<li><a href ="home.jsp">Home</a></li>
-	<li><a href ="CreateTasks.jsp">Create Tasks</a></li>
-	<li><a href ="GetTaskStartDate.jsp">Allocate Tasks</a></li>
-	<li><a href ="login.jsp">Logout</a></li>
+	<li><a href ="/HouseholdChores/Login">Back to Login</a></li>
 </ul>
 <form name="registerInput" action="/HouseholdChores/Register" method="post">
 <div align="center"><br><br><br><br><br><br>

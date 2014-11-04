@@ -22,8 +22,8 @@
 	<ul id='nav'>
 		<li><a href="/HouseholdChores/CreateTask">Create Tasks</a></li>
 		<li><a href="register.jsp">Add People</a></li>
-		<li><a href="GetTaskStartDate.jsp">Allocate Tasks</a></li>
-		<li><a href="login.jsp">Logout</a></li>
+		<li><a href="/HouseholdChores/AllocateTasks">Allocate Tasks</a></li>
+		<li><a href="/HouseholdChores/Login">Logout</a></li>
 	</ul>
 	<br>
 	<h1>${headerMessage}</h1>
