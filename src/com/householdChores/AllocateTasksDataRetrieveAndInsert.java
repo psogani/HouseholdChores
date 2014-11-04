@@ -53,7 +53,7 @@ public class AllocateTasksDataRetrieveAndInsert {
 
 				String allGroupTasksSQL;
 				
-				allGroupTasksSQL = "SELECT u.fname, u.userId, t.* from tasks t, taskAssigned ta, users u where (t.done = 0 or t.recurring = 1) and t.taskId = ta.taskId and ta.uid = u.uid";
+				allGroupTasksSQL = "select * from tasks where (done=0 or recurring=1) and taskId NOT IN (select t.taskId from tasks t, taskassigned ta where t.taskId=ta.taskId)";
 				
 				rs = stmt.executeQuery(allGroupTasksSQL);
 				
@@ -61,8 +61,6 @@ public class AllocateTasksDataRetrieveAndInsert {
 				{
 					UserTasks userTask = new UserTasks();
 					userTask.setIsTaskDue(true);
-					userTask.setUserName(rs.getString("fname"));
-					userTask.setUserId(rs.getString("userId"));
 					userTask.setPointValue(rs.getString("pointValue"));
 					userTask.setTaskName(rs.getString("taskName"));
 					userTask.setTaskId(rs.getString("taskId"));
@@ -90,6 +88,9 @@ public class AllocateTasksDataRetrieveAndInsert {
 		
 		jdbc = new JDBCConnection();
 		conn = jdbc.makeConnection();
+		PreparedStatement pst=null;
+		Statement stmt = null;
+		ResultSet rs = null;
 
 		if(conn != null)
 		{
@@ -99,9 +100,6 @@ public class AllocateTasksDataRetrieveAndInsert {
 				{
 					String checkSQL;
 					checkSQL = "SELECT * FROM taskAssigned where taskId = '" + taskArray[i] + "'" ;
-					
-					Statement stmt = null;
-					ResultSet rs = null;
 					stmt = conn.createStatement();
 					
 					rs = stmt.executeQuery(checkSQL);
@@ -112,41 +110,36 @@ public class AllocateTasksDataRetrieveAndInsert {
 						String updateSQL;
 						updateSQL = "UPDATE TABLE taskAssigned SET uid = ? WHERE taskId = ?";
 						
-						PreparedStatement pst = (PreparedStatement) conn.prepareStatement(updateSQL); 
+						pst = (PreparedStatement) conn.prepareStatement(updateSQL); 
 						pst.setString(1,userArray[i]);        
 						pst.setString(2,taskArray[i]);
 						
 						int pstStatusCode = pst.executeUpdate();
 						
 						if (pstStatusCode != 0) updated = true;
-						pst.close();
-						stmt.close();
-						rs.close();
-						conn.close();
-						return updated;
 					}
 					
 					else
 					{
 						String insertSQL;
-						insertSQL = "INSERT INTO taskAssigned VALUES(uid, taskId) VALUES(?,?)";
+						insertSQL = "INSERT INTO taskAssigned(uid, taskId) VALUES(?,?)";
 						
-						PreparedStatement pst = (PreparedStatement) conn.prepareStatement(insertSQL); 
+						pst = (PreparedStatement) conn.prepareStatement(insertSQL); 
 						pst.setString(1,userArray[i]);        
 						pst.setString(2,taskArray[i]);
 						
 						int pstStatusCode = pst.executeUpdate();
 						
 						if (pstStatusCode != 0) updated = true;
-						pst.close();
-						stmt.close();
-						rs.close();
-						conn.close();
-						return updated;
 					}	
 					
 					
 				}
+				
+				pst.close();
+				stmt.close();
+				rs.close();
+				conn.close();
 							
 			}
 			catch(Exception e)

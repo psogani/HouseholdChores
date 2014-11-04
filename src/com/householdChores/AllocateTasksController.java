@@ -18,8 +18,7 @@ public class AllocateTasksController {
 	{
 		AllocateTasksDataRetrieveAndInsert atra = new AllocateTasksDataRetrieveAndInsert();
 		
-		RegisterDataInsert rd = new RegisterDataInsert(null);
-		rd.getAllUsers();
+		RegisterDataInsert rd = new RegisterDataInsert();
 		
 		ArrayList<UserTasks> utList = atra.getTaskData();
 		
@@ -43,7 +42,7 @@ public class AllocateTasksController {
 		}
 		else
 		{
-			model = new ModelAndView("AssignTasks");
+			model = new ModelAndView("AllocateTasks");
 			model.addObject("msg","Could not assign, please try again.");
 		}
 		return model;
