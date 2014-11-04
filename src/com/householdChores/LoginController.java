@@ -15,10 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class LoginController {
 	
 	@RequestMapping(value="/Login", method = RequestMethod.GET)
-	public ModelAndView getLoginData(ModelAndView m) 
+	public ModelAndView getLoginData(ModelAndView m,HttpServletRequest request) 
 	{
-		if(m.isEmpty())
+		if(m.isEmpty()){
 			m = new ModelAndView("Login");
+		}
 		return m;
 	}
 	
@@ -28,7 +29,7 @@ public class LoginController {
 	{
 		ModelAndView model = null;
 		if(request.getMethod().equals("GET")){
-			System.out.println("here");
+			System.out.println(request.getSession().getAttribute("session_userId"));
 			model = new ModelAndView("Home");
 		}
 		
@@ -37,13 +38,7 @@ public class LoginController {
 			String userId = request.getParameter("username");
 			String password = request.getParameter("password");
 			String userIdFromTable =lad.getUser(userId, password);
-			//RegisterDataInsert rd = new RegisterDataInsert();
-			
-			//@RequestParam("username") String userId,@RequestParam("password") String password,
-			//rd.setUserId(userId);
-			//if(!rd.doesUserExist()){
-				
-			//}
+			request.getSession().setAttribute("session_userId", userId);
 			
 			if(userIdFromTable!=null)
 			{
@@ -58,8 +53,6 @@ public class LoginController {
 				model = new ModelAndView("redirect:Login");
 				redirectAttributes.addFlashAttribute("msg", "Invalid credentials!!");
 				return model;
-				//model = new ModelAndView("Login");
-				//model.addObject("msg","Invalid credentials!!");
 			}
 			
 		}
