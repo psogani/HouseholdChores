@@ -20,7 +20,7 @@
 </head>
 <body>
 	<ul id='nav'>
-		<li><a href="GetTaskDate.jsp">Create Tasks</a></li>
+		<li><a href="/HouseholdChores/CreateTask">Create Tasks</a></li>
 		<li><a href="register.jsp">Add People</a></li>
 		<li><a href="/HouseholdChores/AllocateTasks">Allocate Tasks</a></li>
 		<li><a href="/HouseholdChores/Login">Logout</a></li>
