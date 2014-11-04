@@ -37,15 +37,13 @@ public class LoginController {
 			String userId = request.getParameter("username");
 			String password = request.getParameter("password");
 			String userIdFromTable =lad.getUser(userId, password);
-			RegisterDataInsert rd = new RegisterDataInsert();
+			//RegisterDataInsert rd = new RegisterDataInsert();
 			
 			//@RequestParam("username") String userId,@RequestParam("password") String password,
-			rd.setUserId(userId);
-			if(!rd.doesUserExist()){
-				model = new ModelAndView("redirect:Login");
-				redirectAttributes.addFlashAttribute("msg", "Invalid credentials!!");
-				return model;
-			}
+			//rd.setUserId(userId);
+			//if(!rd.doesUserExist()){
+				
+			//}
 			
 			if(userIdFromTable!=null)
 			{
@@ -57,8 +55,11 @@ public class LoginController {
 			}
 			else
 			{
-				model = new ModelAndView("Login");
-				model.addObject("msg","Invalid credentials!!");
+				model = new ModelAndView("redirect:Login");
+				redirectAttributes.addFlashAttribute("msg", "Invalid credentials!!");
+				return model;
+				//model = new ModelAndView("Login");
+				//model.addObject("msg","Invalid credentials!!");
 			}
 			
 		}
