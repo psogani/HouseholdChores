@@ -2,6 +2,8 @@ package com.householdChores;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,11 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserTaskCompletedController {
 	@RequestMapping(value="/TaskComplete", method = RequestMethod.GET)
-	public ModelAndView getAdmissionForm() 
+	public ModelAndView getAdmissionForm(HttpServletRequest request) 
 	{
 		ModelAndView model = new ModelAndView("TaskComplete");
 		CurrentUserTaskDataAccess userTaskData=new CurrentUserTaskDataAccess();
-		ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask("1");
+		String uId = (String) request.getSession().getAttribute("session_uId");
+		ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask(uId);
 		model.addObject("userTasks",tasks);
 		return model;
 	}
