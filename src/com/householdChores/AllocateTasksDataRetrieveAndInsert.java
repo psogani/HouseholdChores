@@ -52,8 +52,7 @@ public class AllocateTasksDataRetrieveAndInsert {
 				stmt = conn.createStatement();
 
 				String allGroupTasksSQL;
-				
-				allGroupTasksSQL = "select * from tasks where (done=0 or recurring=1) and taskId NOT IN (select t.taskId from tasks t, taskassigned ta where t.taskId=ta.taskId)";
+				allGroupTasksSQL = "select * from tasks where (done=0 or recurring=1) and taskId NOT IN (select t.taskId from tasks t, taskassigned ta where t.taskId=ta.taskId and t.recurring!=1)";
 				
 				rs = stmt.executeQuery(allGroupTasksSQL);
 				

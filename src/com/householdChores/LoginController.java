@@ -27,9 +27,15 @@ public class LoginController {
 	public ModelAndView processLoginForm(final RedirectAttributes redirectAttributes,HttpServletRequest request) 
 	{
 		ModelAndView model = null;
-		if(request.getMethod().equals("GET")){
-			System.out.println("here");
+		if(request.getMethod().equals("GET"))
+		{
+			String uid=(String)request.getSession().getAttribute("session_userId");
+			System.out.println("Getting the data for home page");
 			model = new ModelAndView("Home");
+			CurrentUserTaskDataAccess userTaskData=new CurrentUserTaskDataAccess();
+			ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask(uid);
+			model.addObject("currentTasks",tasks);
+			
 		}
 		
 		else if(request.getMethod().equals("POST")){
@@ -37,18 +43,12 @@ public class LoginController {
 			String userId = request.getParameter("username");
 			String password = request.getParameter("password");
 			String userIdFromTable =lad.getUser(userId, password);
-			//RegisterDataInsert rd = new RegisterDataInsert();
-			
-			//@RequestParam("username") String userId,@RequestParam("password") String password,
-			//rd.setUserId(userId);
-			//if(!rd.doesUserExist()){
-				
-			//}
 			
 			if(userIdFromTable!=null)
 			{
 				model = new ModelAndView("Home");
 				CurrentUserTaskDataAccess userTaskData=new CurrentUserTaskDataAccess();
+				request.getSession().setAttribute("session_userId", userIdFromTable);
 				ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask(userIdFromTable);
 				model.addObject("currentTasks",tasks);
 				model.addObject("headerMessage",userId);
@@ -58,8 +58,6 @@ public class LoginController {
 				model = new ModelAndView("redirect:Login");
 				redirectAttributes.addFlashAttribute("msg", "Invalid credentials!!");
 				return model;
-				//model = new ModelAndView("Login");
-				//model.addObject("msg","Invalid credentials!!");
 			}
 			
 		}

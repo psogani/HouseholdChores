@@ -27,7 +27,7 @@ public class UserTaskCompletedController {
 		updateDb.setCheckBoxValues(checkBoxValues);
 		boolean status = updateDb.updateDoneColumnDb();
 		if( status == true){
-			model = new ModelAndView("MarkComplete");
+			model = new ModelAndView("redirect:Home.html");
 			model.addObject("msg","Your selected task/s has/have been marked as complete successfully");
 		}
 		return model;

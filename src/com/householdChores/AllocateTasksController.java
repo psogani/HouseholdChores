@@ -37,7 +37,7 @@ public class AllocateTasksController {
 		
 		if(updated)
 		{
-			model = new ModelAndView("Home");
+			model = new ModelAndView("redirect:Home.html");
 			model.addObject("msg","Tasks Assigned.");
 		}
 		else
