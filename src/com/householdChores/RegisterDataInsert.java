@@ -31,8 +31,21 @@ public class RegisterDataInsert {
 		
 	}
 	
+	public RegisterDataInsert() {
+		this.firstname = "";
+		this.lastname = "";
+		this.email = "";
+		this.userid = "";
+		this.password = "";
+		
+	}
 	
-	boolean doesUserExist(){
+	public void setUserId(String userid){
+		this.userid = userid;
+	}
+	
+	
+	public boolean doesUserExist(){
 		
 		boolean doesUserExist = false;
 		
@@ -49,7 +62,7 @@ public class RegisterDataInsert {
 				stmt = conn.createStatement();
 
 				String sql;
-				sql = "SELECT * FROM users where userId ='" + params.get("userid") + "'";
+				sql = "SELECT * FROM users where userId ='" + userid + "'";
 				rs = stmt.executeQuery(sql);
 				
 				if (rs.next()) 
@@ -117,7 +130,7 @@ public class RegisterDataInsert {
 		return inserted;
 	}
 	
-	ArrayList<User> getAllUsers()
+	public ArrayList<User> getAllUsers()
 	{
 		ArrayList<User> userList = new ArrayList<User>();
 		

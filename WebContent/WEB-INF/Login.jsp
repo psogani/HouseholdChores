@@ -16,7 +16,7 @@
 		 
 		<p class="centeredImage"> <img src= "<c:url value="/resources/images/Screen Shot 2014-10-09 at 11.20.48 PM.png" />" alt="image description" height="161" width="471" /> </p>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<!--<link href="<c:url value="/resources/style/style.css" />" rel="stylesheet"  type="text/css" /> -->
+		
 		<link href="<c:url value="/resources/style/bootstrap.min.css" />" rel="stylesheet"  type="text/css" media="screen" />
 		<title>Login</title>
 	 
@@ -29,7 +29,7 @@
 		
 		<br><br>
 		
-		<h2>${msg}</h2>
+		<h3>${msg}</h3>
 		<br>
 		 
 		<form action="/HouseholdChores/Home.html" method="post">
