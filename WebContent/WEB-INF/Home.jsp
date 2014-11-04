@@ -28,22 +28,25 @@
 	<br>
 	<h1>${headerMessage}</h1>
 	<%
-		ArrayList<UserTasks> userTask = (ArrayList<UserTasks>) request.getAttribute("currentTasks");
-	
-		out.println("<div id='taskTable' align = 'center'>");
-		out.println("<h2>You have following tasks due for the next two weeks:</h2>");
-		out.println("<table>");
-		out.println("<tr><th>Task Name |</th><th>End Date |</th><th>Points</th></tr>");
-		
-		for (int i = 0; i < userTask.size(); i++) 
-		{
-			UserTasks task = userTask.get(i);
-			out.println("<tr>" + "<td>" + task.getTaskName() + "</td>"
-					+ "<td>" + task.getEndDate() + "</td>" + "<td>"
-					+ task.getPointValue() + "</td>" + "</tr>");
+		HttpServletRequest req =  (HttpServletRequest) pageContext.getRequest();
+		if(req.getMethod().equals("POST")){
+			ArrayList<UserTasks> userTask = (ArrayList<UserTasks>) request.getAttribute("currentTasks");
+			
+			out.println("<div id='taskTable' align = 'center'>");
+			out.println("<h2>You have following tasks due for the next two weeks:</h2>");
+			out.println("<table>");
+			out.println("<tr><th>Task Name |</th><th>End Date |</th><th>Points</th></tr>");
+			
+			for (int i = 0; i < userTask.size(); i++) 
+			{
+				UserTasks task = userTask.get(i);
+				out.println("<tr>" + "<td>" + task.getTaskName() + "</td>"
+						+ "<td>" + task.getEndDate() + "</td>" + "<td>"
+						+ task.getPointValue() + "</td>" + "</tr>");
+			}
+			out.println("</table>");
+			out.println("</div>");
 		}
-		out.println("</table>");
-		out.println("</div>");
 	%>
 
 </body>

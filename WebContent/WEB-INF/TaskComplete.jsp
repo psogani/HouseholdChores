@@ -2,12 +2,38 @@
 <%@page import="com.householdChores.UserTasks"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<style type="text/css">
+		 .centeredImage
+		   {
+		   text-align:center;
+		   margin-top:0px;
+		   margin-bottom:0px;
+		   padding:0px;
+		   }
+		</style>
+		
+		<style type="text/css">
+		   .bs-example{
+		       margin: 20px;
+		   }
+		</style>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+		<p class="centeredImage"> <img src= "<c:url value="/resources/images/Screen Shot 2014-10-09 at 11.20.48 PM.png" />" alt="image description" height="161" width="471" /> </p>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link href="<c:url value="/resources/style/bootstrap.min.css" />" rel="stylesheet"  type="text/css" media="screen" />
+		<link href="<c:url value="/resources/style/style.css" />" rel="stylesheet"  type="text/css" media="screen" />
 		<title>Insert title here</title>
 	</head>
+	
 	<script type="text/javascript">
 			var checkForm = function(form){
 			    var inputs = form.getElementsByTagName('input');
@@ -20,11 +46,25 @@
 			    return false;
 			};
 	</script>	
+	
 	<body>
+		<div class="container">
+		    <ul class="nav nav-tabs" role="tablist">
+		       <li><a href ="/HouseholdChores/Home.html">Home</a></li> 
+		       <li><a href ="/HouseholdChores/CreateTasks">Create Tasks</a></li>
+		       <li class="active"><a href ="#">Current Tasks</a></li> 
+		       <li><a href ="/HouseholdChores/Login">Logout</a></li> 		       
+			</ul>
+		</div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<br><br>
+		
 		<%
 			out.println("<form action = '/HouseholdChores/markComplete' method='post' onsubmit = 'return checkForm(this);' >");
-			out.println("<table border='1' style='width:100%' >" );
-			out.println("<tr>"+
+			out.println("<div class='table-responsive'>");
+			out.println("<table border='2' style='width=20%' class='table table-striped' id='taskCompleteTable' >" );
+			out.println("<tr class='border_bottom'>"+
 						 	"<th> Select </th>" + 
 							"<th> Task Name </th>" + 
 						 	"<th> End Date </th>" + 
@@ -34,15 +74,16 @@
 			for (int i = 0; i < userTask.size(); i++) 
 			{
 				UserTasks task = userTask.get(i);
-				out.println("<tr>" +
-								"<td align = 'center'>" + "<input type='checkbox' name = 'markComplete' value = "+task.getTaskId()+">" + 
-								"<td align = 'center'>" + task.getTaskName() + "</td>" +
-						 		"<td align = 'center'>" + task.getEndDate()  + "</td>" + 
-						 		"<td align = 'center'>" + task.getPointValue() + "</td>" + 
+				out.println("<tr class='border_bottom'>" +
+								"<td>" + "<input type='checkbox' name = 'markComplete' value = "+task.getTaskId()+">" + 
+								"<td>" + task.getTaskName() + "</td>" +
+						 		"<td>" + task.getEndDate()  + "</td>" + 
+						 		"<td>" + task.getPointValue() + "</td>" + 
 						 	"</tr>");
 			}
 			out.println("</table>");
-			out.println("<input id = 'Complete' type = 'submit' class = 'inputs' value = 'Set as Complete' />");
+			out.println("<input id = 'createTaskButton' type = 'submit'  class = 'btn btn-info' value = 'Set as Complete' />");
+			out.println("</div");
 			out.println("</form");
 		%>
 	</body>

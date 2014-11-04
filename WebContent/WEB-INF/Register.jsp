@@ -34,18 +34,17 @@
 	<body>
 		<div class="container">
 			<ul class="nav nav-tabs" role="tablist">
-			<li class="active"><a href ="#">Registration</a></li>
-			   <li><a href ="/HouseholdChores/Login">Back to Login</a></li>
+				<li class="active"><a href ="#">Registration</a></li>
+				<li><a href ="/HouseholdChores/Login">Back to Login</a></li>
 			</ul>
 		</div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		 
 		<div align="center">
 			<br><br>
 			
-			<h2>${msg}</h2>
+			<h3>${msg}</h3>
 			
 			<br><br><br><br>
 			

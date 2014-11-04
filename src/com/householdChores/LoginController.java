@@ -2,6 +2,8 @@ package com.householdChores;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,36 +23,46 @@ public class LoginController {
 	}
 	
 
-	@RequestMapping(value="/Home.html", method = RequestMethod.POST)
-	public ModelAndView processLoginForm(@RequestParam("username") String userId,@RequestParam("password") String password, final RedirectAttributes redirectAttributes) 
+	@RequestMapping(value="/Home.html", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView processLoginForm(final RedirectAttributes redirectAttributes,HttpServletRequest request) 
 	{
-		LoginDataAccess lad=new LoginDataAccess();
-		String userIdFromTable =lad.getUser(userId, password);
-		ModelAndView model;
-		RegisterDataInsert rd = new RegisterDataInsert();
-		
-		rd.setUserId(userId);
-		if(!rd.doesUserExist()){
-			model = new ModelAndView("redirect:Login");
-			redirectAttributes.addFlashAttribute("msg", "Invalid credentials!!");
-			return model;
-		}
-		
-		if(userIdFromTable!=null)
-		{
+		ModelAndView model = null;
+		if(request.getMethod().equals("GET")){
+			System.out.println("here");
 			model = new ModelAndView("Home");
-			CurrentUserTaskDataAccess userTaskData=new CurrentUserTaskDataAccess();
-			ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask(userIdFromTable);
-			model.addObject("currentTasks",tasks);
-			model.addObject("headerMessage",userId);
-		}
-		else
-		{
-			model = new ModelAndView("Login");
-			model.addObject("msg","Invalid credentials!!");
 		}
 		
-
+		else if(request.getMethod().equals("POST")){
+			LoginDataAccess lad=new LoginDataAccess();
+			String userId = request.getParameter("username");
+			String password = request.getParameter("password");
+			String userIdFromTable =lad.getUser(userId, password);
+			RegisterDataInsert rd = new RegisterDataInsert();
+			
+			//@RequestParam("username") String userId,@RequestParam("password") String password,
+			rd.setUserId(userId);
+			if(!rd.doesUserExist()){
+				model = new ModelAndView("redirect:Login");
+				redirectAttributes.addFlashAttribute("msg", "Invalid credentials!!");
+				return model;
+			}
+			
+			if(userIdFromTable!=null)
+			{
+				model = new ModelAndView("Home");
+				CurrentUserTaskDataAccess userTaskData=new CurrentUserTaskDataAccess();
+				ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask(userIdFromTable);
+				model.addObject("currentTasks",tasks);
+				model.addObject("headerMessage",userId);
+			}
+			else
+			{
+				model = new ModelAndView("Login");
+				model.addObject("msg","Invalid credentials!!");
+			}
+			
+		}
+		
 		return model;
 	}
 }
