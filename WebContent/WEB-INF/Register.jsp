@@ -44,11 +44,11 @@
 		<div align="center">
 			<br><br>
 			
-			<h3>${msg}</h3>
+			<h3 class="text-muted">${msg}</h3>
 			
 			<br>
 			
-			<h2>REGISTRATION FORM</h2>
+			<h2 class="text-muted">REGISTRATION FORM</h2>
 			
 			<br><br>
 			<form name="registerInput" action="/HouseholdChores/RegisterSubmit" method="post" >

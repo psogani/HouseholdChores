@@ -38,20 +38,21 @@
 		    <ul class="nav nav-tabs" role="tablist">
 		       <li class="active"><a href ="#">Home</a></li> 
 		       <li><a href ="/HouseholdChores/CreateTask">Create Tasks</a></li>
+		       <li><a href ="/HouseholdChores/AllocateTasks">Allocate Tasks</a></li>
 		       <li><a href ="/HouseholdChores/TaskComplete">Current Tasks</a></li> 
 		       <li><a href ="/HouseholdChores/Register">Add People</a></li> 
 		       <li><a href ="/HouseholdChores/Login">Logout</a></li> 		       
 			</ul>
 		</div>
 		<br>
-		<h2>Hello ${username},</h2>
+		<h2 class="text-muted">Hello ${username},</h2>
 		<br>
-		<h3>${msg}</h3>
+		<h3 class="text-muted">${msg}</h3>
 		<%
 				ArrayList<UserTasks> userTask = (ArrayList<UserTasks>) request.getAttribute("currentTasks");
 				out.println("<div id='taskTable' align = 'center'>");
-				out.println("<h2>You have following tasks due for the next two weeks:</h2>");
-				out.println("<table table border='2' style='width=100px' class='table table-striped table-condensed'>");
+				out.println("<h2 class='text-muted'>You have following tasks due for the next two weeks:</h2>");
+				out.println("<table table border='2' style='width=100px' class='table table-striped table-bordered'>");
 				out.println("<tr class='border_bottom'>" 
 								+ "<th>Task Name</th>" 
 								+ "<th>End Date</th>"  
@@ -70,6 +71,6 @@
 				out.println("</table>");
 				out.println("</div>");			
 		%>
-		<h2>Minimum points to be completed: ${currentPoints}</h2>
+		<h2 class="text-muted">Minimum points to be completed: ${currentPoints}</h2>
 	</body>
 </html>

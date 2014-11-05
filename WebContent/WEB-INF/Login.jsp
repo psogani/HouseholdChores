@@ -29,7 +29,7 @@
 		
 		<br><br>
 		
-		<h3>${msg}</h3>
+		<h3 class="text-muted">${msg}</h3>
 		<br>
 		 
 		<form action="/HouseholdChores/Home.html" method="post">

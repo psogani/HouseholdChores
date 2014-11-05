@@ -36,6 +36,7 @@ public class LoginController {
 			ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask(uid);
 			model.addObject("currentTasks",tasks);
 			int points=userTaskData.getCurrentPoints(tasks);
+			model.addObject("currentPoints",points);
 			
 		}
 		
