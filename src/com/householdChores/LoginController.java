@@ -15,11 +15,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class LoginController {
 	
 	@RequestMapping(value="/Login", method = RequestMethod.GET)
-	public ModelAndView getLoginData(ModelAndView m,HttpServletRequest request) 
+	public ModelAndView getLoginData(ModelAndView m) 
 	{
-		if(m.isEmpty()){
+		if(m.isEmpty())
 			m = new ModelAndView("Login");
-		}
 		return m;
 	}
 	
@@ -28,9 +27,15 @@ public class LoginController {
 	public ModelAndView processLoginForm(final RedirectAttributes redirectAttributes,HttpServletRequest request) 
 	{
 		ModelAndView model = null;
-		if(request.getMethod().equals("GET")){
-			System.out.println(request.getSession().getAttribute("session_userId"));
+		if(request.getMethod().equals("GET"))
+		{
+			String uid=(String)request.getSession().getAttribute("session_userId");
+			System.out.println("Getting the data for home page");
 			model = new ModelAndView("Home");
+			CurrentUserTaskDataAccess userTaskData=new CurrentUserTaskDataAccess();
+			ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask(uid);
+			model.addObject("currentTasks",tasks);
+			
 		}
 		
 		else if(request.getMethod().equals("POST")){
@@ -38,12 +43,12 @@ public class LoginController {
 			String userId = request.getParameter("username");
 			String password = request.getParameter("password");
 			String userIdFromTable =lad.getUser(userId, password);
-			request.getSession().setAttribute("session_userId", userId);
 			
 			if(userIdFromTable!=null)
 			{
 				model = new ModelAndView("Home");
 				CurrentUserTaskDataAccess userTaskData=new CurrentUserTaskDataAccess();
+				request.getSession().setAttribute("session_userId", userIdFromTable);
 				ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask(userIdFromTable);
 				model.addObject("currentTasks",tasks);
 				model.addObject("headerMessage",userId);
