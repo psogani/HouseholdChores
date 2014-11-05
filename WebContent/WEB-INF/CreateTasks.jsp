@@ -42,8 +42,10 @@
 		<div class="container no_margin">
 			<ul class="nav nav-tabs" role="tablist">
 				<li><a href ="/HouseholdChores/Home.html">Home</a></li>
-				<li><a href ="/HouseholdChores/AllocateTasks">Allocate Tasks</a></li>
 				<li class="active"><a href ="#">Create Tasks</a></li>
+				<li><a href ="/HouseholdChores/AllocateTasks">Allocate Tasks</a></li>
+				<li><a href ="/HouseholdChores/TaskComplete">Current Tasks</a></li>
+				<li><a href ="/HouseholdChores/Register">Add People</a></li>
 				<li><a href ="/HouseholdChores/Login">Logout</a></li>
 			</ul>
 		</div>

@@ -31,7 +31,7 @@
 		
 		<link href="<c:url value="/resources/style/bootstrap.min.css" />" rel="stylesheet"  type="text/css" media="screen" />
 		<link href="<c:url value="/resources/style/style.css" />" rel="stylesheet"  type="text/css" media="screen" />
-		<title>Insert title here</title>
+		<title>Mark as Complete</title>
 	</head>
 	
 	<script type="text/javascript">
@@ -52,7 +52,9 @@
 		    <ul class="nav nav-tabs" role="tablist">
 		       <li><a href ="/HouseholdChores/Home.html">Home</a></li> 
 		       <li><a href ="/HouseholdChores/CreateTasks">Create Tasks</a></li>
+		       <li><a href ="/HouseholdChores/AllocateTasks">Allocate Tasks</a></li> 
 		       <li class="active"><a href ="#">Current Tasks</a></li> 
+		       <li><a href ="/HouseholdChores/Register">Add People</a></li>
 		       <li><a href ="/HouseholdChores/Login">Logout</a></li> 		       
 			</ul>
 		</div>
