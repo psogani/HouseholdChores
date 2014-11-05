@@ -70,6 +70,6 @@
 				out.println("</table>");
 				out.println("</div>");			
 		%>
-	
+		<h2>Minimum points to be completed: ${currentPoints}</h2>
 	</body>
 </html>
