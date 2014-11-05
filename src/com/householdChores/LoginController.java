@@ -35,6 +35,7 @@ public class LoginController {
 			CurrentUserTaskDataAccess userTaskData=new CurrentUserTaskDataAccess();
 			ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask(uid);
 			model.addObject("currentTasks",tasks);
+			int points=userTaskData.getCurrentPoints(tasks);
 			
 		}
 		
@@ -50,6 +51,8 @@ public class LoginController {
 				CurrentUserTaskDataAccess userTaskData=new CurrentUserTaskDataAccess();
 				request.getSession().setAttribute("session_userId", userIdFromTable);
 				ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask(userIdFromTable);
+				int points=userTaskData.getCurrentPoints(tasks);
+				model.addObject("currentPoints",points);
 				model.addObject("currentTasks",tasks);
 				model.addObject("headerMessage",userId);
 			}
