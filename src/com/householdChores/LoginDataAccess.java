@@ -2,9 +2,11 @@ package com.householdChores;
 
 import java.sql.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class LoginDataAccess 
 {
-	public String getUser(String userName,String password)
+	public String getUser(String userName,String password, HttpServletRequest request)
 	{
 		JDBCConnection jdbc =new JDBCConnection();
 		Connection conn = jdbc.makeConnection();
@@ -29,6 +31,9 @@ public class LoginDataAccess
 				while(rs.next())
 				{
 					userId=rs.getString("uid");
+					String fname = rs.getString("fname");
+					String lname = rs.getString("lname");
+					request.getSession().setAttribute("username", fname+" "+lname);
 				}
 
 				rs.close();

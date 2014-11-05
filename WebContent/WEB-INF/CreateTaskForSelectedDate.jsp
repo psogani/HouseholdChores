@@ -14,11 +14,12 @@
 	
 	<body>
 		<form action="/HouseholdChores/processTaskInput" method="post">
+		<h2>${msg}</h2>
+		<br>
 		<input type='hidden' name='startDate' value="${selectedDate}"/> 
 			<INPUT type="button" value="Add Row" class="btn btn-info" onclick="addRow('createTaskTable')" />
 			<INPUT type="button" value="Delete Row" class="btn btn-info" onclick="deleteRow('createTaskTable')" />
 			<br><br>
-			
 			<div class="table-responsive">
 				<TABLE class="table table-bordered" id="createTaskTable" width="350px" border="2">
 					<TR class="border_bottom">

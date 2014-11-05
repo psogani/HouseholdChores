@@ -12,11 +12,12 @@ import com.mysql.jdbc.PreparedStatement;
 
 public class TaskDataInsert 
 {
-	public void insertTaskData(String[] taskName,String[] pointValue,boolean[] recurring,String date)
+	public boolean insertTaskData(String[] taskName,String[] pointValue,boolean[] recurring,String date)
 	{
 
 		JDBCConnection jdbc = new JDBCConnection();
 		Connection conn = jdbc.makeConnection();
+		boolean isSuccessfull = false;
 		
 		if(conn!=null)
 		{
@@ -62,9 +63,10 @@ public class TaskDataInsert
 					 }
 
 				}
-				
+				isSuccessfull = true;
 				pst.close();
 				conn.close();
+			
 
 			}
 			catch(Exception e)
@@ -74,5 +76,6 @@ public class TaskDataInsert
 
 
 		}
+		return isSuccessfull;
 	}
 }

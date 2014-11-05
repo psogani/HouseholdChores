@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -29,7 +30,7 @@ public class AllocateTasksController {
 	}
 	
 	@RequestMapping(value="/Home", method = RequestMethod.POST)
-	public ModelAndView submitAdmissionForm(@RequestParam String[] users, String[] tasks) 
+	public ModelAndView submitAdmissionForm(@RequestParam String[] users, String[] tasks, final RedirectAttributes redirectAttributes) 
 	{
 		AllocateTasksDataRetrieveAndInsert atra = new AllocateTasksDataRetrieveAndInsert(tasks,users);
 		boolean updated = atra.assignTasks();
@@ -38,7 +39,7 @@ public class AllocateTasksController {
 		if(updated)
 		{
 			model = new ModelAndView("redirect:Home.html");
-			model.addObject("msg","Tasks Assigned.");
+			redirectAttributes.addFlashAttribute("msg","Tasks Assigned");
 		}
 		else
 		{

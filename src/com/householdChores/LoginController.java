@@ -42,7 +42,7 @@ public class LoginController {
 			LoginDataAccess lad=new LoginDataAccess();
 			String userId = request.getParameter("username");
 			String password = request.getParameter("password");
-			String userIdFromTable =lad.getUser(userId, password);
+			String userIdFromTable =lad.getUser(userId, password, request);
 			
 			if(userIdFromTable!=null)
 			{

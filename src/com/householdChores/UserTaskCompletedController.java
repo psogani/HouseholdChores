@@ -18,7 +18,7 @@ public class UserTaskCompletedController {
 	{
 		ModelAndView model = new ModelAndView("TaskComplete");
 		CurrentUserTaskDataAccess userTaskData=new CurrentUserTaskDataAccess();
-		String uId = (String) request.getSession().getAttribute("session_uId");
+		String uId = (String) request.getSession().getAttribute("session_userId");
 		ArrayList<UserTasks> tasks=userTaskData.getCurrentUserTask(uId);
 		model.addObject("userTasks",tasks);
 		return model;
@@ -32,7 +32,7 @@ public class UserTaskCompletedController {
 		boolean status = updateDb.updateDoneColumnDb();
 		if( status == true){
 			model = new ModelAndView("redirect:Home.html");
-			//model.addObject("msg","Your selected task/s has/have been marked as complete successfully");
+			redirectAttributes.addFlashAttribute("msg","Your selected task/s has/have been marked as complete successfully");
 		}
 		return model;
 		
