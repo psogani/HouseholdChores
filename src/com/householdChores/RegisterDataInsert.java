@@ -85,7 +85,7 @@ public class RegisterDataInsert {
 		return doesUserExist;
 	}
 	
-	boolean registerUser(){
+	public boolean registerUser(){
 		
 		//System.out.println("In register user");
 		

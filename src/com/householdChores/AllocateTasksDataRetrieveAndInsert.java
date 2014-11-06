@@ -19,16 +19,16 @@ public class AllocateTasksDataRetrieveAndInsert {
 	private Connection conn;
 	private ArrayList<UserTasks> tasks = new ArrayList<UserTasks>();
 	
-	AllocateTasksDataRetrieveAndInsert(Map<String, String> parameters)
+	public AllocateTasksDataRetrieveAndInsert(Map<String, String> parameters)
 	{
 		this.parameters = parameters;
 	}
 	
-	AllocateTasksDataRetrieveAndInsert()
+	public AllocateTasksDataRetrieveAndInsert()
 	{		
 	}
 	
-	AllocateTasksDataRetrieveAndInsert(String[] tasks, String[] users)
+	public AllocateTasksDataRetrieveAndInsert(String[] tasks, String[] users)
 	{		
 		this.taskArray = tasks;
 		this.userArray = users;
@@ -37,7 +37,7 @@ public class AllocateTasksDataRetrieveAndInsert {
 	
 	
 	
-	ArrayList<UserTasks> getTaskData()
+	public ArrayList<UserTasks> getTaskData()
 	{
 		jdbc = new JDBCConnection();
 		conn = jdbc.makeConnection();
@@ -80,7 +80,7 @@ public class AllocateTasksDataRetrieveAndInsert {
 	}
 	
 	
-	boolean assignTasks()
+	public boolean assignTasks()
 	{
 		
 		boolean updated = false;

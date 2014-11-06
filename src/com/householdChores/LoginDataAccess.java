@@ -6,11 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 
 public class LoginDataAccess 
 {
-	public String getUser(String userName,String password, HttpServletRequest request)
+	public String getUser(String userName, String password, HttpServletRequest request)
 	{
-		JDBCConnection jdbc =new JDBCConnection();
+		JDBCConnection jdbc = new JDBCConnection();
 		Connection conn = jdbc.makeConnection();
-		String userId=null;
+		String userId = null;
+		
 		if(conn!=null)
 		{
 
@@ -34,6 +35,7 @@ public class LoginDataAccess
 					String fname = rs.getString("fname");
 					String lname = rs.getString("lname");
 					request.getSession().setAttribute("username", fname+" "+lname);
+					
 				}
 
 				rs.close();
