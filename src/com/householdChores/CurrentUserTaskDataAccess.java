@@ -9,32 +9,20 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
+/**
+ * 
+ * This class contains methods access the task data for the current user
+ *
+ */
 public class CurrentUserTaskDataAccess 
 {
-
+	/**
+	 * This function calculates the total nu,ber of points for the user depending on the tasks assigned to him
+	 * @param currentTasks
+	 * @return currentTaskPoints
+	 */
 	public int getCurrentPoints(ArrayList<UserTasks> currentTasks)
 	{
-//		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-//		Calendar c = Calendar.getInstance();
-//		c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
-//		Date d=c.getTime();
-//		c.add(Calendar.DATE,7);
-//		Date end_date = c.getTime();
-//		try
-//		{
-//			String dt=df.format(end_date);
-//			end_date=df.parse(dt);
-//		}
-//		catch(Exception e)
-//		{
-//			System.out.println(e);
-//		}
-				
-
-
-		//System.out.println("date is "+end_date);
-
 		int points=0;
 		for(int i=0;i<currentTasks.size();i++)
 		{
@@ -45,8 +33,14 @@ public class CurrentUserTaskDataAccess
 		return points;
 	}
 
+	/**
+	 * This function gets the current task data for the user from the database
+	 * @param userid
+	 * @return userTaskList
+	 */
 	public ArrayList<UserTasks> getCurrentUserTask(String userid)
 	{
+		//estabilish connection
 		JDBCConnection jdbc = new JDBCConnection();
 		Connection conn = jdbc.makeConnection();
 
@@ -63,7 +57,7 @@ public class CurrentUserTaskDataAccess
 			{
 				System.out.println("Creating statementfor task...");
 				stmt = conn.createStatement();
-
+				//query the database for the tasks
 				String currentTasks;
 				currentTasks = "SELECT * FROM tasks t,taskAssigned ta, users u where u.uid ='" + userid + "' and t.taskId = ta.taskId and u.uid = ta.uid and t.done = 0";
 				rs = stmt.executeQuery(currentTasks);
