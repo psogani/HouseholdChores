@@ -5,6 +5,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@include file="dbConnect.jsp"%>
+
+
+
+<!-- THIS IS AN OBSOLETE JSP FILE FROM ITERATION 1. PELASE LOOK AT THE RECENT FILES IN WEB-INF AND Java Resources/src folders-->
+
+
 <%
     //get the list of tasknames and users
 	String[] taskName = request.getParameterValues("tasks");

@@ -4,6 +4,9 @@
 
 <%@include file="dbConnect.jsp"%>
 
+
+<!-- THIS IS AN OBSOLETE JSP FILE FROM ITERATION 1. PELASE LOOK AT THE RECENT FILES IN WEB-INF AND Java Resources/src folders-->
+
 <%
 	//get the user id and password
 	String user = request.getParameter("userId");

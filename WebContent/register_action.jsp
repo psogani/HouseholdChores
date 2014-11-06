@@ -4,6 +4,10 @@
 <html>
 
 <head>
+
+
+<!-- THIS IS AN OBSOLETE JSP FILE FROM ITERATION 1. PELASE LOOK AT THE RECENT FILES IN WEB-INF AND Java Resources/src folders-->
+
 	<style type="text/css">
 	  .centeredImage
 	    {
