@@ -11,7 +11,7 @@ public class DBConnectTest {
 	@Test
 	public void dbConectionTest() {
 		
-		assertNotNull(jdbcConnection.makeConnection());
+		assertNotNull("JDBC Connection Test",jdbcConnection.makeConnection());
 	}
 
 }

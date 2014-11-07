@@ -42,7 +42,7 @@ public class LoginDataAccess
 			}
 			catch(Exception e)
 			{
-				System.out.print(e);
+				e.printStackTrace();
 			}
 		}
 

@@ -88,8 +88,12 @@ public class RegisterDataInsert {
 	public boolean registerUser(){
 		
 		//System.out.println("In register user");
-		
 		boolean inserted = false;
+		
+		if(	this.firstname == "" || this.lastname == "" || this.email == "" || this.userid == "" || this.password == "")
+			return inserted;
+		
+
 		
 		jdbc = new JDBCConnection();
 		conn = jdbc.makeConnection();
