@@ -1,7 +1,11 @@
 package com.householdChores;
 
 import java.sql.*;
-
+/**
+ * 
+ * Class that is responsible for estabishing a JDBC link to the database
+ *
+ */
 public class JDBCConnection 
 {
 	// JDBC driver name and database URL
@@ -10,7 +14,7 @@ public class JDBCConnection
 
 	//  Database credentials
 	static final String USER = "root";
-	static final String PASS = "pranay27";
+	static final String PASS = "password";
 
 
 	public Connection makeConnection()
